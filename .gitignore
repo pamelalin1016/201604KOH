@@ -1,13 +1,17 @@
-# CakePHP 3
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
 
-/vendor/*
-/config/app.php
-/tmp/*
-/logs/*
+# Eclipse Core
+.project
 
-# CakePHP 2
-
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+# PDT-specific (PHP Development Tools)
+.buildpath
