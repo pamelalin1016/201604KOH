@@ -1,0 +1,21 @@
+
+
+/*loadgin頁*/
+.loading {
+    z-index:1000;
+}
+/*loading頁_end*/
+
+a,.next_btn {
+	cursor: pointer;
+}
+
+.fix_btn .fb_btn, 
+.fix_btn .lt_menu, 
+.fix_btn .logo_btn a {
+    z-index: 3;
+}
+
+/*.club_member .footer {
+    position: initial !important;
+}*/
