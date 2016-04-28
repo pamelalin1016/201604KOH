@@ -16,6 +16,52 @@ a,.next_btn {
     z-index: 3;
 }
 
-/*.club_member .footer {
-    position: initial !important;
-}*/
+.club_member .footer {
+    position: relative;
+    bottom: 70px;
+}
+
+.club_member .content .arrow_btn .lr_btn a {
+	width: 29px;
+}
+
+.club_member .content .arrow_btn .lr_btn a.right:hover {
+	background-position: 5px 0px;
+	z-index:3;
+}
+
+.club_member .content .arrow_btn .lr_btn a.left:hover {
+	background-position: 0px 0px;
+	z-index:3;
+}
+
+.club_member .content .arrow_btn {
+	overflow: hidden;
+    height: 508px;
+}
+
+.club_member .content .arrow_btn .product {
+    width: 706px;
+    height: 508px;
+    margin: 0 auto;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.club_member .content .arrow_btn ul li {
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

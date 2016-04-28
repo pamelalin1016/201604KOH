@@ -13,9 +13,9 @@
 <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
 <link href="reset.css" rel="stylesheet"; type="text/css">
-<link href="rd.css" rel="stylesheet"; type="text/css">
 <link href="koh.css" rel="stylesheet"; type="text/css">
 <link href="pop.css" rel="stylesheet"; type="text/css">
+<link href="rd.css" rel="stylesheet"; type="text/css">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#fullpage').fullpage({
@@ -40,6 +40,12 @@
 					$('#fix_share').show();
 					$('.logo_btn a').attr('class','blue');
 				}
+				$('.kohbg01,.kohbg02,.kohbg03,.kohbg04,.kohbg05,.kohbg06,.kohbg07,.kohbg08,.kohbg09').animate({  borderSpacing: -90 }, {
+				    step: function(now,fx) {
+				        $(this).css('transform','rotate('+now+'deg)');  
+				      },
+				      duration:'slow'
+				  },'linear');
 			},
 		});
 
@@ -50,10 +56,72 @@
 		$('#moveDown').on('click', function(){
             $.fn.fullpage.moveSectionDown();
         });
+
+        $('#home').on('click', function(){
+			$.fn.fullpage.moveTo(1);
+		});
+
+        $('#rule').on('click', function(){
+			$.fn.fullpage.moveTo(5);
+		});
+
+        $('#club').on('click', function(){
+			$.fn.fullpage.moveTo(6);
+		});
+
+        
+        /*var bg_pstion = 0;
+        setTimeout(bg_position,12);
+        function bg_position(){
+			if(bg_pstion>=350){
+				bg_pstion = 0;
+			}else{
+				bg_pstion += 1;
+			}
+			$('body').css('background-position',bg_pstion+'px 0px');
+            setTimeout(bg_position,12);
+        }*/
 	});
+
+	var product = 1;
+	function changeProduct(type){
+		var old_s = 1,new_s = 2;
+		if(type == 'next'){
+			if(product == 4){
+				product = 1;
+				old_s = 4;
+				new_s = 1;
+			}else{
+				old_s = product;
+				product++;
+				new_s = product;
+			}
+		}else{
+			if(product == 1){
+				product = 4;
+				old_s = 1;
+				new_s = 4;
+			}else{
+				old_s = product;
+				product--;
+				new_s = product;
+			}
+		}
+		
+		//animate();
+            if(type == 'next'){
+            	$('.product0'+old_s).animate({"right": '+=800'});
+                $('.product0'+new_s).attr('style','right: -706px;');
+                $('.product0'+new_s).animate({"right": '+=742'});
+            }else{
+                $('.product0'+old_s).animate({"right": '-=800'});
+                $('.product0'+new_s).attr('style','right: 742px;');
+                $('.product0'+new_s).animate({"right": '-=706'});
+            }
+    }
 </script>
 </head>
-<body>
+<body style="background: url('images/video_bg.png') 0 0 repeat #dfffff;">
 <!--loading頁-->
 <div class="loading" >
     <div class="kohman">
@@ -78,16 +146,16 @@
     <div class="lt_menu">
         <ul>
             <li >
-                <a title="首頁" class="index_btn">首頁</a>
+                <a id="home" title="首頁" class="index_btn">首頁</a>
             </li>
             <li>
-                <a title="活動辦法" class="rule_btn">活動辦法</a>
+                <a id="rule" title="活動辦法" class="rule_btn">活動辦法</a>
             </li>
             <li>
-                <a title="聚樂部成員" class="club_m">聚樂部成員</a>
+                <a id="club" title="聚樂部成員" class="club_m">聚樂部成員</a>
             </li>
             <li>
-                <a title="得獎名單" class="award_lt">得獎名單</a>
+                <a id="award" title="得獎名單" class="award_lt">得獎名單</a>
             </li>
         </ul>
     </div>
@@ -95,178 +163,6 @@
 </div>
 <!--固定式按鈕_end-->
     
-<!--index-->
-<div class="index" style="display:none;">
-    <div class="content">
-        <div class="title01">
-        <h2>有ㄒㄧㄠˋ俱樂部</h2>
-        <div class="title02"></div>
-        <div class="title03"></div>
-        <div class="title04"></div>
-        <div class="title05">想與部長”KOH寶”一樣活力充沛嗎?<br>
-來有ㄒㄧㄠ\聚樂部就對了!</div>
-        <div class="share">
-            <a href="" title="分享超KOH時刻，就有機會獲得泰國雙人假期">分享超KOH時刻，就有機會獲得泰國雙人假期</a>
-        </div>
-        </div>     
-<!--
-        <div class="video01"></div>
-        <div class="video02"></div>
-        <div class="video03"></div>
--->
-        <div class="clearboth"></div>
-    </div>
-    <div class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</div>
-</div>
-<!--index_end-->
-
-<!--mov01-->
-<div class="mov01" style="display:none;">
-    <div class="content">
-        <div class="object01"></div>
-        <div class="object02"></div>
-        <div class="object03"></div>
-        <div class="object04"></div>
-        <div class="object05"></div>
-        <div class="object06"></div>
-        <div class="object07">
-            <a href="" title=""></a>
-        </div>
-    </div>
-    <div class="kohbg01"></div>
-    <div class="kohbg02"></div>
-    <div class="kohbg03"></div>
-</div>
-<!--mov01_end-->
-    
-<!--mov02-->
-<div class="mov02" style="display:none;">
-    <div class="content">
-        <div class="object01">
-            <a href="" title=""></a>
-        </div>
-        <div class="object02"></div>
-        <div class="object03"></div>
-        <div class="object04"></div>
-        <div class="object05"></div>
-        <div class="object06"></div>
-        <div class="object07"></div>
-        <div class="kohbg04"></div>
-        <div class="kohbg05"></div>
-        <div class="kohbg06"></div>
-    </div>
-</div>
-<!--mov02_end-->
-    
-<!--mov03-->
-<div class="mov03" style="display:none;">
-    <div class="content">
-        <div class="object01">
-            <a href="" title=""></a>
-        </div>
-        <div class="object02"></div>
-        <div class="object03"></div>
-        <div class="object04"></div>
-        <div class="object05"></div>
-        <div class="object06"></div>
-        <div class="object07"></div>
-        <div class="kohbg07"></div>
-        <div class="kohbg08"></div>
-        <div class="kohbg09"></div>
-        <div class="clearboth"></div>
-    </div>
-</div>
-<!--mov03_end-->
-    
-<!--活動辦法-->
-<div class="rule_page" style="display:none;">
-    <div class="content">
-        <div class="title">
-            <div class="object01"></div>
-            <h3 class="object02"></h3>
-            <div class="object03"></div>
-        </div>
-        <div class="rule_cont">
-            <div class="menu01">
-                <div class="top">
-                    <a href="" title="【喝就ㄒㄧㄠˋ】登錄發票" class="nor01 op01">【喝就ㄒㄧㄠˋ】登錄發票</a>
-                    <a href="" title="【超KOH時刻】留言分享" class="nor02">【超KOH時刻】留言分享</a>
-                    <a href="" title="其他" class="nor03">其他</a>
-                    <div class="clearboth"></div>
-                </div>
-            </div>
-            <div class="menu01_b">
-                <div class="p1"></div>
-                <div class="p2" style="display:none;"></div>
-                <div class="p3" style="display:none;"></div>
-                <div class="p4" style="display:none;"></div>
-                <p>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                </p>
-            </div>
-            <div class="menu02_b" style="display:none;">
-                <div class="p1"></div>
-                <div class="p2" style="display:none;"></div>
-                <p>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                </p>
-            </div>
-            <div class="menu03_b" style="display:none;">
-                <div class="p1"></div>
-                <div class="p2" style="display:none;"></div>
-                <div class="p3" style="display:none;"></div>
-                <div class="p4" style="display:none;"></div>
-                <p>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                    <a href="" title="">●</a>
-                </p>
-            </div>
-        </div>
-    </div>    
-</div>
-<!--活動辦法_end-->
-
-<!--俱樂部成員-->
-<div class="club_member" style="display:none;">
-    <div class="content">
-        <div class="title">
-            <h3>俱樂部成員</h3>
-        </div>
-        <div class="tip">
-            <div class="tip_koh">
-                部長 - KOH寶：有用不完的活力，總是充滿體力最喜歡將歡ㄒㄧㄠ\散佈給大家
-            </div>
-        </div>
-        <div class="arrow_btn">
-            <ul>
-                <li class="product01">KOH COCONUT酷椰子純椰子汁</li>
-                <li class="product02" style="display:none;">香椰脆片-原味</li>
-                <li class="product03" style="display:none;">香椰脆片-哇沙米</li>
-                <li class="product04" style="display:none;">香椰脆片-巧克力</li>
-            </ul>
-            <div class="lr_btn">
-                <a href="" class="left">left</a>
-                <a href="" class="right">right</a>
-                <div class="clearboth"></div>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="content">
-            <a href="" title="WORLD GYM" class="world">WORLD GYM</a>
-            <a href="" title="TOUCH AREO" class="touch">TOUCH AREO</a>
-            <div class="copyright">Copyright © 2016  BABI  Inc. All Rights Reserved. Designed by Penetration Internet Agency</div>
-            <div class="clearboth"></div>
-        </div>
-    </div>
-</div>    
-<!--俱樂部成員_end-->
 
 <!--登錄發票-->
 <div class="invo_pop" style="display:none;">
@@ -521,6 +417,32 @@
 <!--恭喜分享成功_end-->
 
 <div id="fullpage">
+	<div class="section">
+		<!--index-->
+		<div class="index">
+		    <div class="content">
+		        <div class="title01">
+		        <h2>有ㄒㄧㄠˋ俱樂部</h2>
+		        <div class="title02"></div>
+		        <div class="title03"></div>
+		        <div class="title04"></div>
+		        <div class="title05">想與部長”KOH寶”一樣活力充沛嗎?<br>
+		來有ㄒㄧㄠ\聚樂部就對了!</div>
+		        <div class="share">
+		            <a href="" title="分享超KOH時刻，就有機會獲得泰國雙人假期">分享超KOH時刻，就有機會獲得泰國雙人假期</a>
+		        </div>
+		        </div>     
+		<!--
+		        <div class="video01"></div>
+		        <div class="video02"></div>
+		        <div class="video03"></div>
+		-->
+		        <div class="clearboth"></div>
+		    </div>
+		    <div class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</div>
+		</div>
+		<!--index_end-->
+	</div>
 	<div class="section" id="section0">
 		<!--mov01-->
 		<div class="mov01">
@@ -653,19 +575,24 @@
 		            </div>
 		        </div>
 		        <div class="arrow_btn">
-		            <ul>
-		                <li class="product01">KOH COCONUT酷椰子純椰子汁</li>
-		                <li class="product02" style="display:none;">香椰脆片-原味</li>
-		                <li class="product03" style="display:none;">香椰脆片-哇沙米</li>
-		                <li class="product04" style="display:none;">香椰脆片-巧克力</li>
-		            </ul>
+		        	<div class="product">
+			            <ul>
+			                <li class="product01">KOH COCONUT酷椰子純椰子汁</li>
+			                <li class="product02" style="display:none;">香椰脆片-原味</li>
+			                <li class="product03" style="display:none;">香椰脆片-哇沙米</li>
+			                <li class="product04" style="display:none;">香椰脆片-巧克力</li>
+			            </ul>
+		            </div>
 		            <div class="lr_btn">
-		                <a class="left">left</a>
-		                <a class="right">right</a>
+		                <a class="left" onclick="changeProduct('prev');">left</a>
+		                <a class="right" onclick="changeProduct('next');">right</a>
 		                <div class="clearboth"></div>
 		            </div>
 		        </div>
 		    </div>
+
+		</div>    
+		<div class="club_member">
 		    <div class="footer">
 		        <div class="content">
 		            <a href="" title="WORLD GYM" class="world">WORLD GYM</a>
@@ -674,10 +601,8 @@
 		            <div class="clearboth"></div>
 		        </div>
 		    </div>
-		</div>    
+		</div>
 		<!--俱樂部成員_end-->
-	</div>
-	<div class="section" id="section5">
 	</div>
 </div>
 </body>
