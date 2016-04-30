@@ -40,7 +40,8 @@
 					$('#fix_share').show();
 					$('.logo_btn a').attr('class','blue');
 				}
-				$('.kohbg01,.kohbg02,.kohbg03,.kohbg04,.kohbg05,.kohbg06,.kohbg07,.kohbg08,.kohbg09').animate({  borderSpacing: -90 }, {
+				//,.kohbg03,.kohbg05,.kohbg08,.kohbg09
+				$('.kohbg01,.kohbg02,.kohbg04,.kohbg06,.kohbg07').animate({  borderSpacing: -90 }, {
 				    step: function(now,fx) {
 				        $(this).css('transform','rotate('+now+'deg)');  
 				      },
@@ -48,10 +49,6 @@
 				  },'linear');
 			},
 		});
-
-		$('.index_btn').on('click', function(){
-            $.fn.fullpage.moveSectionDown();
-        });
 
 		$('#moveDown').on('click', function(){
             $.fn.fullpage.moveSectionDown();
@@ -83,6 +80,39 @@
         }*/
 	});
 
+	var rule_menu = 1, rule_item = 1;
+	function changeRule(menu,item){
+		if(rule_menu != menu || rule_item != item){
+			if(rule_menu != menu){
+				$('.rule_cont .menu01 .nor0'+menu).attr("class", "nor0"+menu+" op0"+menu);
+				$('.rule_cont .menu01 .nor0'+rule_menu).attr("class", "nor0"+rule_menu);
+			}
+
+			$('.menu0'+menu+'_b div p a').attr('style','');
+			$('.menu0'+menu+'_b div p a:eq('+(item-1)+')').attr('style','color: blanchedalmond;');
+			
+			$('.menu0'+rule_menu+'_b .p'+rule_item).animate({"opacity": '-=1'});
+			$('.menu0'+menu+'_b .p'+item).css('opacity','0');
+			$('.menu0'+menu+'_b').show();
+			$('.menu0'+menu+'_b .p'+item).show();
+			$('.menu0'+menu+'_b .p'+item).animate({"opacity": '+=1'});
+
+			if(rule_menu != menu){
+				$('.menu0'+menu+'_b').animate({"opacity": '+=1'});
+				$('.menu0'+rule_menu+'_b').animate({"opacity": '-=1'}, {
+					start:function() {
+						setTimeout("$('.menu0"+rule_menu+"_b').hide();",500);
+					},
+				  },'linear');
+			}
+			
+			rule_menu = menu;
+			rule_item = item;
+			//$('.menu0'+menu+'_b div').hide();
+        	//$('.product0'+old_s).animate({"right": '+=800'});
+		}
+	}
+	
 	var product = 1;
 	function changeProduct(type){
 		var old_s = 1,new_s = 2;
@@ -119,6 +149,19 @@
                 $('.product0'+new_s).animate({"right": '-=706'});
             }
     }
+
+    function get_invoice(){
+        $('.pop_background').show();
+        $('.invo_pop').show();
+
+        $('.invo_pop .login').on('click',function(){
+
+            $('.pop_background').hide();
+            $('.invo_pop').hide();
+            });
+    }
+
+    
 </script>
 </head>
 <body style="background: url('images/video_bg.png') 0 0 repeat #dfffff;">
@@ -139,7 +182,7 @@
         <a href="https://www.facebook.com/KohCoconut/" title="facebook" target="_blank">facebook</a>
     </div>
     <div class="invoice" >
-        <a href="" title="登錄發票，泰國雙人遊等你來拿" class="invo_b sbtn">
+        <a title="登錄發票，泰國雙人遊等你來拿" class="invo_b sbtn" onclick="get_invoice();">
             <img src="images/invo_btn.png">
         </a>
     </div>
@@ -163,12 +206,16 @@
 </div>
 <!--固定式按鈕_end-->
     
+<!-- pop 遮罩 -->
+<div class="pop_background" >
+</div>
+<!-- pop 遮罩 end -->
 
 <!--登錄發票-->
 <div class="invo_pop" style="display:none;">
     <div class="pop_top">
         <h3>喝就ㄒ一ㄠˋ登錄發票</h3>
-        <a href="" title="" class="login">登入</a>
+        <a title="" class="login">登入</a>
     </div>
     <div class="pop_min">
         <ul>
@@ -519,9 +566,9 @@
 		        <div class="rule_cont">
 		            <div class="menu01">
 		                <div class="top">
-		                    <a href="" title="【喝就ㄒㄧㄠˋ】登錄發票" class="nor01 op01">【喝就ㄒㄧㄠˋ】登錄發票</a>
-		                    <a href="" title="【超KOH時刻】留言分享" class="nor02">【超KOH時刻】留言分享</a>
-		                    <a href="" title="其他" class="nor03">其他</a>
+		                    <a title="【喝就ㄒㄧㄠˋ】登錄發票" class="nor01 op01" onclick="changeRule(1,1);">【喝就ㄒㄧㄠˋ】登錄發票</a>
+		                    <a title="【超KOH時刻】留言分享" class="nor02" onclick="changeRule(2,1);">【超KOH時刻】留言分享</a>
+		                    <a title="其他" class="nor03" onclick="changeRule(3,1);">其他</a>
 		                    <div class="clearboth"></div>
 		                </div>
 		            </div>
@@ -530,32 +577,38 @@
 		                <div class="p2" style="display:none;"></div>
 		                <div class="p3" style="display:none;"></div>
 		                <div class="p4" style="display:none;"></div>
-		                <p>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                </p>
+		                <div>
+		                	<p>
+    		                    <a title="" onclick="changeRule(1,1);" style="color:blanchedalmond;">●</a>
+    		                    <a title="" onclick="changeRule(1,2);">●</a>
+    		                    <a title="" onclick="changeRule(1,3);">●</a>
+    		                    <a title="" onclick="changeRule(1,4);">●</a>
+		                    </p>
+		                </div>
 		            </div>
-		            <div class="menu02_b" style="display:none;">
+		            <div class="menu02_b" style="display:none;opacity: 0;">
 		                <div class="p1"></div>
 		                <div class="p2" style="display:none;"></div>
-		                <p>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                </p>
+		                <div>
+		                	<p>
+		                    <a title="" onclick="changeRule(2,1);">●</a>
+		                    <a title="" onclick="changeRule(2,2);">●</a>
+		                    </p>
+		                </div>
 		            </div>
-		            <div class="menu03_b" style="display:none;">
+		            <div class="menu03_b" style="display:none;opacity: 0;">
 		                <div class="p1"></div>
 		                <div class="p2" style="display:none;"></div>
 		                <div class="p3" style="display:none;"></div>
 		                <div class="p4" style="display:none;"></div>
-		                <p>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                    <a href="" title="">●</a>
-		                </p>
+		                <div>
+		                	<p>
+		                    <a title="" onclick="changeRule(3,1);">●</a>
+		                    <a title="" onclick="changeRule(3,2);">●</a>
+		                    <a title="" onclick="changeRule(3,3);">●</a>
+		                    <a title="" onclick="changeRule(3,4);">●</a>
+		                    </p>
+		                </div>
 		            </div>
 		        </div>
 		    </div>    

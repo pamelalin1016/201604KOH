@@ -1,4 +1,4 @@
-
+@charset "utf-8";
 
 /*loadgin頁*/
 .loading {
@@ -15,6 +15,33 @@ a,.next_btn {
 .fix_btn .logo_btn a {
     z-index: 3;
 }
+
+.rule_page .content .rule_cont .menu01_b,
+.rule_page .content .rule_cont .menu02_b,
+.rule_page .content .rule_cont .menu03_b {
+    position: absolute;
+}
+
+.rule_page .content .rule_cont .menu01_b div,
+.rule_page .content .rule_cont .menu02_b div,
+.rule_page .content .rule_cont .menu03_b div {
+    position: absolute;
+}
+
+.rule_page .content .rule_cont .menu01_b div:last-child,
+.rule_page .content .rule_cont .menu02_b div:last-child,
+.rule_page .content .rule_cont .menu03_b div:last-child {
+	margin: 364px auto 0px auto;
+	width:520px;
+}
+
+
+.rule_page .content .rule_cont .menu01_b p,
+.rule_page .content .rule_cont .menu02_b p,
+.rule_page .content .rule_cont .menu03_b p {
+    position: relative;
+}
+
 
 .club_member .footer {
     position: relative;
@@ -53,7 +80,18 @@ a,.next_btn {
     position: absolute;
 }
 
+.pop_background {
+	z-index:100;
+	background-color: rgba(50,50,50,0.3);
+	width:100%;
+	height: 100vh;
+    position: absolute;
+    display: none;
+}
 
+.invo_pop {
+	z-index:500;
+}
 
 
 
