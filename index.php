@@ -78,7 +78,7 @@
 		});
 
         
-        /*var bg_pstion = 0;
+        var bg_pstion = 0;
         setTimeout(bg_position,12);
         function bg_position(){
 			if(bg_pstion>=350){
@@ -88,7 +88,7 @@
 			}
 			$('body').css('background-position',bg_pstion+'px 0px');
             setTimeout(bg_position,12);
-        }*/
+        }
 
         
 	});
@@ -121,8 +121,6 @@
 			
 			rule_menu = menu;
 			rule_item = item;
-			//$('.menu0'+menu+'_b div').hide();
-        	//$('.product0'+old_s).animate({"right": '+=800'});
 		}
 	}
 	
@@ -151,7 +149,7 @@
 			}
 		}
 		
-		//animate();
+
             if(type == 'next'){
             	$('.product0'+old_s).animate({"right": '+=800'});
                 $('.product0'+new_s).attr('style','right: -706px;');
@@ -165,12 +163,12 @@
 
 	var invo_item = 1;
     function get_invoice(){
-        /*if(fb_id == ''){
+        if(fb_id == ''){
         	if(!get_facebook()){
             	alert('Facebook 未正確登入!');
             	return false;
         	}
-        }*/
+        }
         $('#twzipcode').twzipcode({
         	'css': ['county', 'district', 'zipcode'],
         	'countyName'   : 'invoice_county',
@@ -194,12 +192,12 @@
     }
 
     function get_share(){
-        /*if(fb_id == ''){
+        if(fb_id == ''){
         	if(!get_facebook()){
             	alert('Facebook 未正確登入!');
             	return false;
         	}
-        }*/
+        }
         $('.pop_background').show();
         $('.koh_msg').show();
 
