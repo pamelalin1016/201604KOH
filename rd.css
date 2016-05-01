@@ -82,17 +82,20 @@ a,.next_btn {
 
 .pop_background {
 	z-index:100;
-	background-color: rgba(50,50,50,0.3);
+	background-color: rgba(50,50,50,0.5);
 	width:100%;
 	height: 100vh;
     position: absolute;
     display: none;
 }
 
-.invo_pop {
+.invo_pop, .koh_msg, .award_list {
 	z-index:500;
 }
 
+.zipcode {
+	display:none;
+}
 
 
 

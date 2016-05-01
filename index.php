@@ -12,10 +12,11 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
-<link href="reset.css" rel="stylesheet"; type="text/css">
-<link href="koh.css" rel="stylesheet"; type="text/css">
-<link href="pop.css" rel="stylesheet"; type="text/css">
-<link href="rd.css" rel="stylesheet"; type="text/css">
+<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
+<link href="reset.css" rel="stylesheet" type="text/css">
+<link href="koh.css" rel="stylesheet" type="text/css">
+<link href="pop.css" rel="stylesheet" type="text/css">
+<link href="rd.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#fullpage').fullpage({
@@ -41,7 +42,7 @@
 					$('.logo_btn a').attr('class','blue');
 				}
 				//,.kohbg03,.kohbg05,.kohbg08,.kohbg09
-				$('.kohbg01,.kohbg02,.kohbg04,.kohbg06,.kohbg07').animate({  borderSpacing: -90 }, {
+				$('.kohbg01,.kohbg02,.kohbg04,.kohbg06,.kohbg07').animate({  borderSpacing: -270 }, {
 				    step: function(now,fx) {
 				        $(this).css('transform','rotate('+now+'deg)');  
 				      },
@@ -66,6 +67,16 @@
 			$.fn.fullpage.moveTo(6);
 		});
 
+		$('#award').on('click', function(){
+			$('.pop_background').show();
+	        $('.award_list').show();
+
+	        $('.award_list .pop_top a').on('click',function(){
+	            $('.pop_background').hide();
+	            $('.award_list').hide();
+	        });
+		});
+
         
         /*var bg_pstion = 0;
         setTimeout(bg_position,12);
@@ -78,6 +89,8 @@
 			$('body').css('background-position',bg_pstion+'px 0px');
             setTimeout(bg_position,12);
         }*/
+
+        
 	});
 
 	var rule_menu = 1, rule_item = 1;
@@ -150,18 +163,143 @@
             }
     }
 
+	var invo_item = 1;
     function get_invoice(){
+        /*if(fb_id == ''){
+        	if(!get_facebook()){
+            	alert('Facebook 未正確登入!');
+            	return false;
+        	}
+        }*/
+        $('#twzipcode').twzipcode({
+        	'css': ['county', 'district', 'zipcode'],
+        	'countyName'   : 'invoice_county',
+            'districtName' : 'invoice_district',
+            'zipcodeName'  : 'invoice_zipcode'
+        });
         $('.pop_background').show();
         $('.invo_pop').show();
 
         $('.invo_pop .login').on('click',function(){
-
             $('.pop_background').hide();
             $('.invo_pop').hide();
-            });
+        });
+
+        $('.add_invo').on('click', function(){
+            if(invo_item < 5){
+            	$('#invoice_box').append('<li class="add_invo"> <input id="invoice_num'+invo_item+'" name="invoice_num[]" type="text" value="" class="t_box"> </li>');
+            	invo_item++;
+            }
+        });
     }
 
+    function get_share(){
+        /*if(fb_id == ''){
+        	if(!get_facebook()){
+            	alert('Facebook 未正確登入!');
+            	return false;
+        	}
+        }*/
+        $('.pop_background').show();
+        $('.koh_msg').show();
+
+        $('.koh_msg .msg_top a').on('click',function(){
+            $('.pop_background').hide();
+            $('.koh_msg').hide();
+        });
+        
+    }
     
+
+    var fb_id = fb_name = '';
+    function get_facebook(){
+    	window.fbAsyncInit = function() {
+    	    FB.init({
+    	      appId      : '543797882389004',
+    	      xfbml      : true,
+    	      version    : 'v2.5'
+    	    });
+    	    
+    	    FB.getLoginStatus(function(response) {
+    	    	  if (response.status === 'connected') {
+    	    	    FB.api('/me', function(response) {
+				        ajax_facebook(response.id, response.name);
+				        return true;
+    			    });
+    	    	  }
+    	    	  else {
+    				FB.login(function(response) {
+				      if (response.authResponse) {
+				       FB.api('/me', function(response) {
+				           ajax_facebook(response.id, response.name);
+					       return true;
+				       });
+				      }else{
+					      return false;
+				      }
+    				});
+    	    	  }
+    	    	});
+    	    	
+    	  };
+
+    	  (function(d, s, id){
+    	     var js, fjs = d.getElementsByTagName(s)[0];
+    	     if (d.getElementById(id)) {return;}
+    	     js = d.createElement(s); js.id = id;
+    	     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+    	     fjs.parentNode.insertBefore(js, fjs);
+    	   }(document, 'script', 'facebook-jssdk'));
+    	  
+    }
+
+    function ajax_facebook(id, name){
+        fb_id = id;
+        fb_name = name;
+        
+    }
+
+    function ajax_invoice(){
+    	if(!check_form_invoice()){
+        	return false;
+    	}
+
+    	
+    }
+
+    function check_form_invoice(){
+        if($('#invoice_name').val() == ''){
+            alert('姓名是必填欄位!');
+            return false;
+        }
+
+        if($('#invoice_age').val() == ''){
+            alert('年齡是必填欄位!');
+            return false;
+        }
+
+        if($('#invoice_tel').val() == ''){
+            alert('電話是必填欄位!');
+            return false;
+        }
+
+        if($('select[name=invoice_county]').val() == ''){
+            alert('縣市是必填欄位!');
+            return false;
+        }
+
+        if($('select[name=invoice_district]').val() == ''){
+            alert('鄉鎮市區是必填欄位!');
+            return false;
+        }
+
+        if($('#invoice_addr').val() == ''){
+            alert('地址詳細是必填欄位!');
+            return false;
+        }
+
+        return true;
+    }
 </script>
 </head>
 <body style="background: url('images/video_bg.png') 0 0 repeat #dfffff;">
@@ -202,7 +340,7 @@
             </li>
         </ul>
     </div>
-    <a id="fix_share" title="分享超KOH時刻，就有機會獲得泰國雙人假期" class="s_btn">分享超KOH時刻，就有機會獲得泰國雙人假期</a>
+    <a id="fix_share" title="分享超KOH時刻，就有機會獲得泰國雙人假期" class="s_btn" onclick="get_share();">分享超KOH時刻，就有機會獲得泰國雙人假期</a>
 </div>
 <!--固定式按鈕_end-->
     
@@ -213,9 +351,10 @@
 
 <!--登錄發票-->
 <div class="invo_pop" style="display:none;">
+	<form action="" method="post">
     <div class="pop_top">
         <h3>喝就ㄒ一ㄠˋ登錄發票</h3>
-        <a title="" class="login">登入</a>
+        <a title="" class="login"></a>
     </div>
     <div class="pop_min">
         <ul>
@@ -228,55 +367,38 @@
                 </p>
             </li>
         </ul>
-        <ul>
+        <ul id="invoice_box">
             <li class="normal">
                 發票編號
-                <input id="" type="text" value="" class="t_box">
-                <a href="" title="新增" class="add_invo">新增</a>
+                <input id="invoice_num0" name="invoice_num[]" type="text" value="" class="t_box">
+                <a title="新增" class="add_invo">新增</a>
             </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
+        </ul>
+        <ul>
             <li class="add_invo">
                 <em class="tip">KOH寶叮寧：點選+號一次最多登入5張發票編號。</em>
             </li>
             <li class="add_inf">
                 <span>姓名</span>
-                <input id="" type="text" value="" class="t_box">
+                <input id="invoice_name" name="invoice_name" type="text" value="" class="t_box">
             </li>
             <li class="add_inf">
                 <span>性別</span>
-                <input id="" type="checkbox" value="" >女
-                <input id="" type="checkbox" value="" >男
+                <input id="invoice_sex0" name="invoice_sex" type="radio" value="" checked="checked">女
+                <input id="invoice_sex1" name="invoice_sex" type="radio" value="" >男
             </li>
             <li class="add_inf">
                 <span>年齡</span>
-                <input id="" type="text" value="" class="t_box">
+                <input id="invoice_age" name="invoice_age" type="text" value="" class="t_box">
             </li>
             <li class="add_inf">
                 <span>電話</span>
-                <input id="" type="text" value="" class="t_box">
+                <input id="invoice_tel" name="invoice_tel" type="text" value="" class="t_box">
             </li>
             <li class="add_inf add">
                 <span>通訊地址</span>
-                <select id="">
-                  <option selected="" value="縣市">縣市</option>
-                  <option value="台北市">台北市</option>
-                </select>
-                <select id="">
-                  <option selected="" value="鄉鎮市區">鄉鎮市區</option>
-                  <option value="中山區">中山區</option>
-                </select>
-                <input id="" type="text" value="" class="t_box a_box">
+                <span id="twzipcode"></span>
+                <input id="invoice_addr" name="invoice_addr" type="text" value="" class="t_box a_box">
             </li>
             <li class="agree">
                 <input id="" type="checkbox" value="">我已閱讀過活動辦法，並同意主辦單位運用此資料進行贈獎事宜聯繫
@@ -284,9 +406,10 @@
         </ul>
     </div>
     <div class="pop_bottom">
-        <a href="" title="確認送出">確認送出</a>
+        <a title="確認送出"  onclick="ajax_invoice();">確認送出</a>
         <div class="plan"></div>
     </div>
+    </form>
 </div>
 <!--登錄發票_end-->
 
@@ -309,7 +432,7 @@
 <div class="award_list" style="display:none;">
     <div class="pop_top">
         <h3>得獎名單</h3>
-        <a href="" title="進入網站">進入網站</a>
+        <a title="進入網站"></a>
     </div>
     <div class="pop_min">
         <div class="left_list">
@@ -432,7 +555,7 @@
 <div class="koh_msg" style="display:none;">
     <div class="msg_top">
         <h3>超KOH時刻留言分享</h3>
-        <a href="" title="關閉">關閉</a>
+        <a title="關閉"></a>
     </div>
     <div class="msg_min">
         <div class="arrow">
@@ -476,7 +599,7 @@
 		        <div class="title05">想與部長”KOH寶”一樣活力充沛嗎?<br>
 		來有ㄒㄧㄠ\聚樂部就對了!</div>
 		        <div class="share">
-		            <a href="" title="分享超KOH時刻，就有機會獲得泰國雙人假期">分享超KOH時刻，就有機會獲得泰國雙人假期</a>
+		            <a title="分享超KOH時刻，就有機會獲得泰國雙人假期" onclick="get_share();">分享超KOH時刻，就有機會獲得泰國雙人假期</a>
 		        </div>
 		        </div>     
 		<!--
