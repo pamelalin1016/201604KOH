@@ -1,0 +1,20 @@
+@charset "utf-8";
+.fix_btn{
+    position: fixed;
+}
+.fix_btn .logo{
+    position: fixed;
+}
+.fix_btn .menu{
+    position: fixed;
+    left: 100%;
+    top: 0%;
+}
+.m_btn div{
+    position: fixed;
+    right: 3.91%;
+    top: 3.44%;
+}
+.fix_btn .m_btn .back {
+    display:none;
+}

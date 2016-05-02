@@ -15,3 +15,7 @@ local.properties
 
 # PDT-specific (PHP Development Tools)
 .buildpath
+
+# settings
+.env.dev_config.php
+.env.online_config.php

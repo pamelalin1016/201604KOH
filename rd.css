@@ -16,6 +16,10 @@ a,.next_btn {
     z-index: 3;
 }
 
+.fix_btn .invoice .invo_b:hover img{
+	width: 105%;
+} 
+
 .rule_page .content .rule_cont .menu01_b,
 .rule_page .content .rule_cont .menu02_b,
 .rule_page .content .rule_cont .menu03_b {
@@ -89,7 +93,7 @@ a,.next_btn {
     display: none;
 }
 
-.invo_pop, .koh_msg, .award_list {
+.invo_pop, .koh_msg, .award_list, .award_pop, .share_pop {
 	z-index:500;
 }
 
@@ -97,8 +101,19 @@ a,.next_btn {
 	display:none;
 }
 
+.koh_msg .msg_min {
+	/*height: 456px;*/
+}
 
+.koh_msg .msg_min .fb_msg {
+	position:  fixed;
+	overflow: hidden;
+	z-index:550;
+}
 
+.koh_msg .msg_min .arrow {
+	padding: 203px 0px;
+}
 
 
 

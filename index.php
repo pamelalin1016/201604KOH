@@ -78,7 +78,7 @@
 		});
 
         
-        var bg_pstion = 0;
+        /*var bg_pstion = 0;
         setTimeout(bg_position,12);
         function bg_position(){
 			if(bg_pstion>=350){
@@ -88,7 +88,7 @@
 			}
 			$('body').css('background-position',bg_pstion+'px 0px');
             setTimeout(bg_position,12);
-        }
+        }*/
 
         
 	});
@@ -161,6 +161,30 @@
             }
     }
 
+	var fb_msg = 1;
+	function changeFbMsg(type){
+		var now_msg = 1;
+		if(type == 'left'){
+			if(fb_msg == 1){
+				now_msg = 3;
+			}else{
+				now_msg = fb_msg-1;
+			}
+		}
+
+		if(type == 'right'){
+			if(fb_msg == 3){
+				now_msg = 1;
+			}else{
+				now_msg = fb_msg+1;
+			}
+		}
+
+		$('#fb_msg1, #fb_msg2, #fb_msg3').hide();
+		$('#fb_msg'+now_msg).show();
+		fb_msg = now_msg;
+	}
+
 	var invo_item = 1;
     function get_invoice(){
         if(fb_id == ''){
@@ -169,6 +193,7 @@
             	return false;
         	}
         }
+        
         $('#twzipcode').twzipcode({
         	'css': ['county', 'district', 'zipcode'],
         	'countyName'   : 'invoice_county',
@@ -208,8 +233,9 @@
         
     }
     
-
-    var fb_id = fb_name = '';
+    var fb_id = "1582921411";
+    var fb_name = "pamela";
+    //var fb_id = fb_name = '';
     function get_facebook(){
     	window.fbAsyncInit = function() {
     	    FB.init({
@@ -235,7 +261,7 @@
 				      }else{
 					      return false;
 				      }
-    				});
+    				}, {scope: 'public_profile,email'});
     	    	  }
     	    	});
     	    	
@@ -254,7 +280,28 @@
     function ajax_facebook(id, name){
         fb_id = id;
         fb_name = name;
-        
+
+    	$.ajax({
+        	type: 'post',
+			url: 'ajax.php?mod=fb',
+			data: 'fb_id=' + id + '&name=' + name ,
+			dataType: 'json',
+			success: function(response){
+				if(response.s == '1'){
+					console.log('登入成功!');
+				}else{
+					alert('登入失敗請重新再登入一次!');
+					window.location.reload();
+					window.location.reload();
+					window.location.reload();
+		        	return false;
+				}
+			},
+            error:function(xhr, ajaxOptions, thrownError){ 
+                alert(xhr.status); 
+                alert(thrownError); 
+            }
+        });
     }
 
     function ajax_invoice(){
@@ -262,10 +309,90 @@
         	return false;
     	}
 
+    	$('#invoice_fb_id').val(fb_id);
+
+    	//$('.pop_bottom a').hide();
+
+    	$.ajax({
+            url: 'ajax.php?mod=invoice',
+            data: $('#invoice_form').serialize(),
+            type:"POST",
+            dataType: 'json',
+            success: function(response){
+				if(response.s == '1'){
+					$('.invo_pop').hide();
+					$('.award_pop').show();
+
+					$('.pop_bottom a').show();
+				}else{
+					console.log(response);
+					alert('發票登錄失敗請重新再試一次!');
+					window.location.reload();
+					window.location.reload();
+					window.location.reload();
+		        	return false;
+				}
+            },
+            error:function(xhr, ajaxOptions, thrownError){ 
+                alert(xhr.status); 
+                alert(thrownError); 
+                $('.pop_bottom a').show();
+            }
+        });
     	
     }
 
+    function ajax_video(){
+        $('.koh_msg .msg_bottom a.share').hide();
+        
+    	$.ajax({
+            url: 'ajax.php?mod=video',
+            data: 'fb_id=' + fb_id + '&video=' + fb_msg ,
+            type:"POST",
+            dataType: 'json',
+            success: function(response){
+				if(response.s == '1'){
+					$('.koh_msg').hide();
+					$('.share_pop').show();
+
+					$('.koh_msg .msg_bottom a.share').show();
+				}else{
+					console.log(response);
+					alert('發票登錄失敗請重新再試一次!');
+					window.location.reload();
+					window.location.reload();
+					window.location.reload();
+		        	return false;
+				}
+				$('.koh_msg').hide();
+				$('.share_pop').show();
+
+				$('.koh_msg .msg_bottom a.share').show();
+            },
+            error:function(xhr, ajaxOptions, thrownError){ 
+                alert(xhr.status); 
+                alert(thrownError); 
+                $('.koh_msg .msg_bottom a.share').show();
+            }
+        });
+    }
+
     function check_form_invoice(){
+
+    	for(var i = 0 ; i < invo_item ; i++){
+            if($('#invoice_num' + i).val() == ''){
+                alert('發票號碼是必填欄位!');
+                return false;
+            }
+
+            var re = /^[a-zA-Z]{2}-[0-9]{8}$/;
+            if (!re.test($('#invoice_num' + i).val())){
+            	$('#invoice_num' + i).val('');
+            	alert('發票號碼格式錯誤!');
+                return false;
+            }
+    	}
+        
         if($('#invoice_name').val() == ''){
             alert('姓名是必填欄位!');
             return false;
@@ -278,6 +405,13 @@
 
         if($('#invoice_tel').val() == ''){
             alert('電話是必填欄位!');
+            return false;
+        }
+
+        var re = /^[0-9]{9}$/;
+        var re2 = /^[0-9]{10}$/;
+        if (!(re.test($('#invoice_tel').val()) || re2.test($('#invoice_tel').val()))){
+        	alert('電話號碼格式錯誤!');
             return false;
         }
 
@@ -296,7 +430,17 @@
             return false;
         }
 
+        if(!$('#invoice_chk').prop("checked")){
+        	alert('請確認已閱讀活動辦法');
+            return false;
+        }
         return true;
+    }
+
+    function close_award_pop(){
+        $('.share_pop').hide();
+        $('.award_pop').hide();
+        $('.pop_background').hide();
     }
 </script>
 </head>
@@ -349,7 +493,8 @@
 
 <!--登錄發票-->
 <div class="invo_pop" style="display:none;">
-	<form action="" method="post">
+	<form id="invoice_form" action="" method="post">
+	<input type="hidden" name="invoice_fb_id" id="invoice_fb_id" value=""/>
     <div class="pop_top">
         <h3>喝就ㄒ一ㄠˋ登錄發票</h3>
         <a title="" class="login"></a>
@@ -382,8 +527,8 @@
             </li>
             <li class="add_inf">
                 <span>性別</span>
-                <input id="invoice_sex0" name="invoice_sex" type="radio" value="" checked="checked">女
-                <input id="invoice_sex1" name="invoice_sex" type="radio" value="" >男
+                <input id="invoice_sex0" name="invoice_sex" type="radio" value="0" checked="checked">女
+                <input id="invoice_sex1" name="invoice_sex" type="radio" value="1" >男
             </li>
             <li class="add_inf">
                 <span>年齡</span>
@@ -399,7 +544,7 @@
                 <input id="invoice_addr" name="invoice_addr" type="text" value="" class="t_box a_box">
             </li>
             <li class="agree">
-                <input id="" type="checkbox" value="">我已閱讀過活動辦法，並同意主辦單位運用此資料進行贈獎事宜聯繫
+                <input id="invoice_chk" name="invoice_chk" type="checkbox" value=""><label for="invoice_chk">我已閱讀過活動辦法，並同意主辦單位運用此資料進行贈獎事宜聯繫</label>
             </li>
         </ul>
     </div>
@@ -420,7 +565,7 @@
         <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
     </div>
     <div class="pop_bottom">
-        <a href="" title="確認送出">確認送出</a>
+        <a title="確認送出" onclick="close_award_pop();">確認送出</a>
         <div class="plan"></div>
     </div>
 </div>
@@ -556,16 +701,21 @@
         <a title="關閉"></a>
     </div>
     <div class="msg_min">
+        <div class="fb_msg">
+        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&width=500&show_text=true&appId=543797882389004&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F802976773165920&width=500&show_text=true&appId=543797882389004&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F808866192576978&width=500&show_text=true&appId=543797882389004&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div>
         <div class="arrow">
-            <a href="" title="" class="left">left</a>
-            <a href="" title="" class="right">right</a>
+            <a title="" class="left" onclick="changeFbMsg('left');">left</a>
+            <a title="" class="right" onclick="changeFbMsg('right');">right</a>
             <div class="clearboth"></div>
         </div>
-        <div class="fb_msg"></div>
     </div>
     <div class="msg_bottom">
-        <a href="" title="" class="like">讚</a>
-        <a href="" title="" class="share">分享</a>
+        <!-- <a title="" class="like">讚</a> -->
+        <a title="" class="share" onclick="ajax_video();window.open('https://www.facebook.com/sharer/sharer.php?app_id=543797882389004&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');">分享</a>
+        
     </div>
 </div>
 <!--超KOH時刻留言分享_end-->
@@ -579,7 +729,7 @@
         <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
     </div>
     <div class="pop_bottom">
-        <a href="" title="確定">確定</a>
+        <a title="確定" onclick="close_award_pop();">確定</a>
     </div>
 </div>
 <!--恭喜分享成功_end-->

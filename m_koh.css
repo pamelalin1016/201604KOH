@@ -1,0 +1,654 @@
+@charset "utf-8";
+/*loading*/
+.loading {
+    width: 100%;
+    height: 100vh;
+    background: #dffffe;
+}
+.loading .kohman {
+    width: 100%;
+    padding-top: 55%;
+    text-align: center;
+}
+.loading .kohman img {
+    text-align: center;
+}
+/*loading_end*/
+
+/*固定式按鈕*/
+.fix_btn {
+    width: 100%;
+    background: url("m_images/index_bg.jpg") 0 0  no-repeat;
+    background-size: cover;
+}
+.fix_btn .logo {
+    position: absolute;
+    left: 13px;
+    top: 13px;
+}
+.fix_btn .m_btn {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    background: url("") 0 0  no-repeat;
+}
+.fix_btn .m_btn .open,
+.fix_btn .m_btn .back {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+.fix_btn .m_btn .open img, 
+.fix_btn .m_btn .back img {
+    width: 100%;
+}
+.fix_btn .menu {
+    width: 80%;
+}
+.fix_btn .menu ul li {
+    background: #026eb7;
+    border: 1px solid #fff;
+}
+.fix_btn .menu ul li a {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    height: 80px;
+    line-height: 80px;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+}
+.fix_btn .menu ul li a img {
+    width: 40px;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+.fix_btn .menu ul li a.club img {
+    top: 18px;
+}
+.fix_btn .menu ul li a.award img {
+    top: 18px;
+}
+.fix_btn .menu ul li a.fb_c img {
+    top: 18px;
+}
+/*固定式按鈕_end*/
+
+/*index*/
+.index {
+    width: 100%;
+    height: 100vh;
+    background: url("m_images/index_bg.jpg") 0 0 no-repeat;
+}
+.index .content {
+    width: 100%;
+    padding-top: 100px;
+}
+.index .content .title01 {
+    width: 100%;
+    position: relative;
+}
+.index .content .title01 h2 {
+    position: absolute;
+    top: 15px;
+}
+.index .content .title01 img {
+    width: 100%;
+    
+}
+.index .content .invoice_btn {
+    display: block;
+    width: 140px;
+    margin: 0 auto;
+}
+.index .content .invoice_btn img {
+    width: 100%;
+}
+.index .content .next_btn {
+    width: 100%;
+    height: 45px;
+    color: #fff;
+    display: inline-block;
+    font-size: 0.7rem;
+    text-align: center;
+    position: fixed;
+    bottom: 35px;
+    text-decoration: none;
+    background: url("m_images/arrow_bottom.png") center bottom no-repeat;
+}
+/*index_end*/
+
+/*mov01*/
+.mov01 {
+    width: 100%;
+    height: 100vh;
+    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+}
+.mov01 .content {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 20%;
+}
+.mov01 .content .object01 {
+    width: 100%;    
+}
+.mov01 .content .object01 img {
+    width: 100%;
+}
+.mov01 .content .object02 {
+    position: absolute;
+    bottom: 100px;
+    right: 10px;
+    text-align: right;
+}
+.mov01 .content .object02 img {
+    width: 70%;    
+}
+.mov01 .content .object03 {
+    width: 120px;
+    position: absolute;
+    bottom: 10px;
+}
+.mov01 .content .object03 img {
+    width: 100%;
+}
+/*mov01_end*/
+/*mov02*/
+.mov02 {
+    width: 100%;
+    height: 100vh;
+    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+}
+.mov02 .content {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 20%;
+}
+.mov02 .content .object01 {
+    width: 100%;    
+}
+.mov02 .content .object01 img {
+    width: 100%;
+}
+.mov02 .content .object02 {
+    position: absolute;
+    bottom: 100px;
+    right: 45px;
+    text-align: right;
+}
+.mov02 .content .object02 img {
+    width: 60%;    
+}
+.mov02 .content .object03 {
+    width: 120px;
+    position: absolute;
+    bottom: 10px;
+}
+.mov02 .content .object03 img {
+    width: 100%;
+}
+/*mov02_end*/
+/*mov03*/
+.mov03 {
+    width: 100%;
+    height: 100vh;
+    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+}
+.mov03 .content {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 20%;
+}
+.mov03 .content .object01 {
+    width: 100%;    
+}
+.mov03 .content .object01 img {
+    width: 100%;
+}
+.mov03 .content .object02 {
+    position: absolute;
+    bottom: 65px;
+    right: 35px;
+    text-align: right;
+}
+.mov03 .content .object02 img {
+    width: 55%;    
+}
+.mov03 .content .object03 {
+    width: 120px;
+    position: absolute;
+    bottom: 10px;
+}
+.mov03 .content .object03 img {
+    width: 100%;
+}
+/*mov03_end*/
+
+/*登錄發票*/
+.invo {
+    width: 100%;
+    height: 100vh;
+    background: #8fc31f;
+}
+.invo .invo_top {
+    width: 100%;
+}
+.invo .invo_top h3 {
+}
+.invo .invo_top h3 img {
+    width: 100%;
+}
+.invo .invo_top p {
+    width: 90%;
+    color: #fff;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+    margin: 0 auto;
+}
+.invo .invo_min {
+    color: #ff0;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+    width: 90%;
+    margin: 10px auto 0;
+}
+.invo .invo_min .add_in {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url("m_images/invoice_04.png") 0 0 no-repeat;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+.invo .invo_min ul li {
+    margin-bottom: 5px;
+}
+.invo .invo_min .normal {
+    position: relative;
+}
+.invo .invo_min .normal .t_box {
+    width: 90%;
+    height: 34px;
+}
+.invo .invo_min .add_invo {
+/*    padding-left: 68px;*/
+}
+.invo .invo_min .add_invo .t_box {
+    width: 90%;
+    height: 34px;
+}
+.invo .invo_min .add_inf {
+/*    padding-left: 32px;*/
+}
+.invo .invo_min .add_inf .t_box {
+    width: 90%;
+    height: 34px;
+}
+.invo .invo_min .add_inf select {
+    width: 45%;
+    height: 34px;
+}
+.invo .invo_min .add {
+/*    padding-left: 0px;*/
+}
+.invo .invo_min .inf {
+/*    padding-left: 67px;*/
+}
+.invo .invo_min .agree {
+/*    padding-left: 67px;*/
+}
+.invo .invo_min .enter {
+    margin: 20px 0;
+}
+.invo .invo_min .enter a {
+    width: 150px;
+    color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: #036eb8;
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration: none;
+}
+/*登錄發票_end*/
+
+/*獲得抽獎資格*/
+.award {
+    width: 100%;
+    height: 100vh;
+    background: #8fc31f;
+}
+.award .award_top {
+    width: 100%;
+}
+.award .award_top h3 img {
+    width: 100%;
+}
+.award .award_min {
+    width: 100%;
+    padding-top: 35%;
+}
+.award .award_min h4 {
+    width: 80%;
+    margin: 0 auto;
+}
+.award .award_min h4 img {
+    width: 100%;
+}
+.award .award_min p {
+    width: 90%;
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 34px;
+}
+.award .award_min a {
+    width: 150px;
+    color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    margin: 20px auto 0;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: #036eb8;
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration: none;
+}
+/*獲得抽獎資格_end*/
+
+/*超KOH時刻留言分享*/
+.koh_msg {
+    width: 100%;
+    height: 100vh;
+    background: #1bd1ef;
+}
+.koh_msg .msg_top {
+    width: 100%;
+}
+.koh_msg .msg_top h3 img {
+    width: 100%;
+}
+.koh_msg .msg_min {
+    width: 100%;
+}
+.koh_msg .msg_min h4 {
+    width: 90%;
+    margin: 0 auto;
+}
+.koh_msg .msg_bottom {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    z-index: 86;
+}
+.koh_msg .msg_bottom .rlbtn a {
+    display: block;
+    width: 24px;
+    height: 62px;
+}
+.koh_msg .msg_bottom a.left{
+    display: block;
+    width: 24px;
+    height: 62px;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    background: url("m_images/msg_left.png") 0 center no-repeat;
+}
+.koh_msg .msg_bottom a.right {
+    display: block;
+    width: 24px;
+    height: 62px;
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    background: url("m_images/msg_right.png") 0 center no-repeat;
+}
+.koh_msg .msg_bottom .fb {
+    bottom: 0px;
+    margin: 0 auto;
+}
+.koh_msg .msg_bottom .fb a.like,
+.koh_msg .msg_bottom .fb a.share {
+    width: 118px;
+    height: 62px;
+    display: inline-block;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.koh_msg .msg_bottom .fb a.like {
+    background: url("m_images/msg_04.png") 0 0 no-repeat;
+}
+.koh_msg .msg_bottom .fb a.share {
+    background: url("m_images/msg_05.png") 0 0 no-repeat;
+}
+/*超KOH時刻留言分享_end*/
+
+/*恭喜分享成功*/
+.share_pop {
+    width: 100%;
+    height: 100vh;
+    background: #1bd1ef;
+}
+.share_pop .pop_top {
+    width: 100%;
+}
+.share_pop .pop_top h3 img {
+    width: 100%;
+}
+.share_pop .pop_min {
+    width: 100%;
+    padding-top: 35%;
+}
+.share_pop .pop_min h4 {
+    width: 80%;
+    margin: 0 auto;
+}
+.share_pop .pop_min h4 img {
+    width: 100%;
+}
+.share_pop .pop_min p {
+    width: 90%;
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 34px;
+}
+.share_pop .pop_min a {
+    width: 150px;
+    color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    margin: 20px auto 0;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: #036eb8;
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration: none;
+}
+/*恭喜分享成功_end*/
+
+/*活動辦法*/
+.rule_page {
+    width: 100%;
+    background: url("m_images/video_bg02.png") 0 0 repeat #6fb2e5;
+}
+.rule_page .content {
+    padding-top: 100px;
+}
+.rule_page .content .title {
+    width: 100%;
+}
+.rule_page .content .title img {
+    width: 100%;
+}
+.rule_page .content .rule_cont {
+    width: 90%;
+    margin: 0 auto;
+}
+.rule_page .content .rule_cont h4{
+    width: 80%;
+    margin: 0 auto;
+}
+.rule_page .content .rule_cont .title {
+    color: #ff0;    
+    font-style: italic;
+}
+.rule_page .content .rule_cont .cont {
+    color: #fff; 
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+}
+.rule_page .content .rule_cont ul {
+    padding: 20px 0 0;
+}
+.rule_page .content .rule_cont h4 img {
+    width: 100%;
+}
+/*活動辦法end*/
+
+/*俱樂部成員*/
+.club_member {
+    width: 100%;
+    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+}
+.club_member .content {
+    width: 100%;
+    padding-top: 100px;
+}
+.club_member .content .title h3 img{
+    width: 100%;
+}
+.club_member .content .tip {
+    width: 80%;
+    margin: -70px auto 0;
+}
+.club_member .content .tip img{
+    width: 100%;
+}
+.club_member .content .cont_min {
+    width: 100%; 
+}
+.club_member .content .cont_min ul li {
+    width: 90%;
+    margin: 20px auto 0;
+/*    padding: 20px auto;*/
+}
+.club_member .content .cont_min ul li img{
+    width: 100%;
+}
+.club_member .footer {
+    background: #fff;
+    border-top: 3px solid #016d35;
+    margin-top: 20px;
+    position: relative;
+}
+.club_member .footer a {
+    display: block;
+    position: absolute;
+}
+.club_member .footer a.world {
+    bottom: 45px;
+    left: 50px;
+}
+.club_member .footer a.touch {
+    bottom: 75px;
+    left: 170px;
+}
+.club_member .footer .copyright {
+    width: 90%;
+    font-size: 0.8rem;
+    margin: 80px auto 20px;
+    text-align: center;
+}
+/*俱樂部成員_end*/
+
+/*得獎名單*/
+.award_list {
+    width: 100%;
+    background: #8fc320;
+}
+.award_list .pop_top h3 img{
+    width: 100%;    
+}
+.award_list .left_list h4 {
+    text-align: center;
+}
+.award_list .left_list h4 img {
+}
+.award_list .left_list .title {
+    color: #ff0;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 10px auto;
+}
+.award_list .left_list .name, 
+.award_list .left_list .number {
+    display: inline-block;
+    float: left;
+    color: #fff;
+    font-size: 0.8rem;
+    margin: 10px auto;
+}
+.award_list .left_list .name {
+    width: 40%;
+    text-align: right;
+}
+.award_list .left_list .number {
+    width: 50%;
+    text-align: center;
+}
+
+.award_list .right_list {
+    background: #1cd1f0;
+    padding-top: 25px;
+}
+.award_list .right_list h4 {
+    text-align: center;
+}
+.award_list .right_list h4 img {
+}
+.award_list .right_list .title {
+    width: 100%;
+    color: #ff0;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 10px auto;
+}
+.award_list .right_list .name, 
+.award_list .right_list .number {
+    display: inline-block;
+    color: #fff;
+    font-size: 0.8rem;
+    margin: 10px auto;
+}
+.award_list .right_list .name {
+    width: 100%;
+    text-align: center;
+}
+.award_list .right_list .number {
+    width: 50%;
+    text-align: center;
+}
+/*得獎名單_end*/
+
+.clearboth {
+    clear: both;
+}
