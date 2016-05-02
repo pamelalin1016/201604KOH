@@ -59,7 +59,7 @@
 		});
 
         
-        var bg_pstion = 0;
+        /*var bg_pstion = 0;
         setTimeout(bg_position,12);
         function bg_position(){
 			if(bg_pstion>=350){
@@ -69,11 +69,19 @@
 			}
 			$('body').css('background-position',bg_pstion+'px 0px');
             setTimeout(bg_position,12);
-        }
+        }*/
+		bg_position();
+		function bg_position(){
+			$('body').animate({ 'background-position': 350 }, 5000, 'linear',
+				function(){
+					$('body').css('background-position', 0);
+					bg_position();
+				});
+		}
 
-        
 	});
 
+	var now_event = '';
 	var rule_menu = 1, rule_item = 1;
 	function changeRule(menu,item){
 		if(rule_menu != menu || rule_item != item){
@@ -169,7 +177,11 @@
 	var invo_item = 1;
     function get_invoice(){
         if(fb_id == ''){
-        	get_facebook();
+        	if(!get_facebook()){
+        		now_event = 'get_invoice';
+            	//alert('Facebook 未正確登入!');
+            	return false;
+        	}
         }
         
         $('#twzipcode').twzipcode({
@@ -196,7 +208,10 @@
 
     function get_share(){
         if(fb_id == ''){
-        	get_facebook();
+        	if(!get_facebook()){
+            	now_event = 'get_share';
+            	return false;
+        	}
         }
         $('.pop_background').show();
         $('.koh_msg').show();
@@ -234,9 +249,10 @@
 					       return true;
 				       });
 				      }else{
-					      return false;
+							console.log('登入gg!');
+					        return false;
 				      }
-    				}, {scope: 'public_profile,email'});
+    				});
     	    	  }
     	    	});
     	    	
@@ -264,6 +280,15 @@
 			success: function(response){
 				if(response.s == '1'){
 					console.log('登入成功!');
+					
+					if(now_event == 'get_invoice'){
+						get_invoice();
+					}
+					
+					if(now_event == 'get_share'){
+						get_share();
+					}
+					
 				}else{
 					alert('登入失敗請重新再登入一次!');
 					window.location.reload();

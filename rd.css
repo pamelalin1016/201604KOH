@@ -115,8 +115,40 @@ a,.next_btn {
 	padding: 203px 0px;
 }
 
+.index .content, .index .next_btn {
+	z-index: 2;
+}
 
+.video_box {
+	width:100%;
+	height: 100vh;
+	top:0px;
+	position: fixed;
+}
 
+.video_box div {
+	width: calc(100% / 3);
+    overflow: hidden;
+    float:left;
+}
+
+.video_box div video {
+	left: -100%
+}
+
+.video_box video {
+	height:100vh;
+    position: relative;
+}
+
+.video_top {
+	top:0px;
+	z-index:1;
+	background-color: rgba(50,50,50,0);
+	width:100%;
+	height: 100vh;
+	position: fixed;
+}
 
 
 

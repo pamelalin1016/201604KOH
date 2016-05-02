@@ -13,6 +13,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="m_koh.css" rel="stylesheet" type="text/css">
 <link href="m_rd.css" rel="stylesheet" type="text/css">
@@ -22,7 +23,32 @@
 <!--loading頁-->
 <script>
 $(document).ready(function() {
-    $(".loading").css({"display":"none"});
+	$('.loading').hide();
+	$('#fullpage').fullpage({
+		scrollBar: false,
+		afterLoad: function(anchorLink, index){
+			$('.fix_btn').show();
+			if(index == 1){
+				$('.topbtn').hide();
+				$('.logo_btn a').attr('class','');
+			}
+		},
+		onLeave: function(index,nextIndex,direction){
+			if(nextIndex == 1){
+				$('.topbtn').hide();
+				$('.logo_btn a').attr('class','');
+			}else{
+
+				$('.topbtn').show();
+				$('.logo_btn a').attr('class','blue');
+			}
+			
+		},
+	});
+
+	$('#moveDown').on('click', function(){
+        $.fn.fullpage.moveSectionDown();
+    });
 
 
     $(".fix_btn .m_btn .open").click(function() {
@@ -37,8 +63,352 @@ $(document).ready(function() {
     });    
 
 
-
+    $('.content .object01').on('click',function(){
+    	get_share();
+    });
 });
+
+
+
+var fb_msg = 1;
+function changeFbMsg(type){
+	var now_msg = 1;
+	if(type == 'left'){
+		if(fb_msg == 1){
+			now_msg = 3;
+		}else{
+			now_msg = fb_msg-1;
+		}
+	}
+
+	if(type == 'right'){
+		if(fb_msg == 3){
+			now_msg = 1;
+		}else{
+			now_msg = fb_msg+1;
+		}
+	}
+
+	$('#fb_msg1, #fb_msg2, #fb_msg3').hide();
+	$('#fb_msg'+now_msg).show();
+	fb_msg = now_msg;
+}
+
+var invo_item = 1;
+function get_invoice(){
+    if(fb_id == ''){
+    	get_facebook();
+    }
+    
+    $('.invo').show();
+    
+    $('#twzipcode').twzipcode({
+    	'css': ['county', 'district', 'zipcode'],
+    	'countyName'   : 'invoice_county',
+        'districtName' : 'invoice_district',
+        'zipcodeName'  : 'invoice_zipcode'
+    });
+    $('.pop_background').show();
+    $('.invo_pop').show();
+
+    $('.invo_pop .login').on('click',function(){
+        $('.pop_background').hide();
+        $('.invo_pop').hide();
+    });
+
+    $('.add_in').on('click', function(){
+        if(invo_item < 5){
+        	$('#invoice_box').append('<li class="add_invo"> <input id="invoice_num'+invo_item+'" name="invoice_num[]" type="text" value="" class="t_box"> </li>');
+        	invo_item++;
+        }
+    });
+}
+
+
+
+function get_share(){
+    if(fb_id == ''){
+    	get_facebook();
+    }
+
+    $('.koh_msg').show();
+
+    $('.koh_msg .msg_top a').on('click',function(){
+        $('.pop_background').hide();
+        $('.koh_msg').hide();
+    });
+    
+}
+
+// var fb_id = "1582921411";
+// var fb_name = "pamela";
+var fb_id = fb_name = '';
+function get_facebook(){
+	window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '543797882389004',
+	      xfbml      : true,
+	      version    : 'v2.5'
+	    });
+	    
+	    FB.getLoginStatus(function(response) {
+	    	  if (response.status === 'connected') {
+	    	    FB.api('/me', function(response) {
+			        ajax_facebook(response.id, response.name);
+			        return true;
+			    });
+	    	  }
+	    	  else {
+				FB.login(function(response) {
+			      if (response.authResponse) {
+			       FB.api('/me', function(response) {
+			           ajax_facebook(response.id, response.name);
+				       return true;
+			       });
+			      }else{
+				      return false;
+			      }
+				});
+	    	  }
+	    	});
+	    	
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	  
+}
+
+// var fb_id = "1582921411";
+// var fb_name = "pamela";
+var fb_id = fb_name = '';
+function get_facebook(){
+	window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '543797882389004',
+	      xfbml      : true,
+	      version    : 'v2.5'
+	    });
+	    
+	    FB.getLoginStatus(function(response) {
+	    	  if (response.status === 'connected') {
+	    	    FB.api('/me', function(response) {
+			        ajax_facebook(response.id, response.name);
+			        return true;
+			    });
+	    	  }
+	    	  else {
+				FB.login(function(response) {
+			      if (response.authResponse) {
+			       FB.api('/me', function(response) {
+			           ajax_facebook(response.id, response.name);
+				       return true;
+			       });
+			      }else{
+				      return false;
+			      }
+				}, {scope: 'public_profile,email'});
+	    	  }
+	    	});
+	    	
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	  
+}
+
+function ajax_facebook(id, name){
+    fb_id = id;
+    fb_name = name;
+
+	$.ajax({
+    	type: 'post',
+		url: 'ajax.php?mod=fb',
+		data: 'fb_id=' + id + '&name=' + name ,
+		dataType: 'json',
+		success: function(response){
+			if(response.s == '1'){
+				console.log('登入成功!');
+			}else{
+				alert('登入失敗請重新再登入一次!');
+				window.location.reload();
+				window.location.reload();
+				window.location.reload();
+	        	return false;
+			}
+		},
+        error:function(xhr, ajaxOptions, thrownError){ 
+            alert(xhr.status); 
+            alert(thrownError); 
+        }
+    });
+}
+
+function ajax_invoice(){
+	if(fb_id == ''){
+    	if(!get_facebook()){
+        	alert('Facebook 未正確登入!');
+        	return false;
+    	}
+    }
+	
+	if(!check_form_invoice()){
+    	return false;
+	}
+
+	$('#invoice_fb_id').val(fb_id);
+
+	$('.invo_min .enter a').hide();
+
+	$.ajax({
+        url: 'ajax.php?mod=invoice',
+        data: $('#invoice_form').serialize(),
+        type:"POST",
+        dataType: 'json',
+        success: function(response){
+			if(response.s == '1'){
+				$('.invo').hide();
+				$('.award').show();
+
+				$('.invo_min .enter a').show();
+			}else{
+				console.log(response);
+				alert('發票登錄失敗請重新再試一次!');
+				window.location.reload();
+				window.location.reload();
+				window.location.reload();
+	        	return false;
+			}
+        },
+        error:function(xhr, ajaxOptions, thrownError){ 
+            alert(xhr.status); 
+            alert(thrownError); 
+            $('.invo_min .enter a').show();
+        }
+    });
+	
+}
+
+function ajax_video(){
+
+	if(fb_id == ''){
+    	if(!get_facebook()){
+        	alert('Facebook 未正確登入!');
+        	return false;
+    	}
+    }
+    $('.koh_msg .msg_bottom a.share').hide();
+    
+	$.ajax({
+        url: 'ajax.php?mod=video',
+        data: 'fb_id=' + fb_id + '&video=' + fb_msg ,
+        type:"POST",
+        dataType: 'json',
+        success: function(response){
+			if(response.s == '1'){
+				$('.koh_msg').hide();
+				$('.share_pop').show();
+
+				$('.koh_msg .msg_bottom a.share').show();
+			}else{
+				console.log(response);
+				alert('發票登錄失敗請重新再試一次!');
+				window.location.reload();
+				window.location.reload();
+				window.location.reload();
+	        	return false;
+			}
+			$('.koh_msg').hide();
+			$('.share_pop').show();
+
+			$('.koh_msg .msg_bottom a.share').show();
+        },
+        error:function(xhr, ajaxOptions, thrownError){ 
+            alert(xhr.status); 
+            alert(thrownError); 
+            $('.koh_msg .msg_bottom a.share').show();
+        }
+    });
+
+	window.open('https://www.facebook.com/sharer/sharer.php?app_id=543797882389004&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+	$('.koh_msg').hide();
+}
+
+function check_form_invoice(){
+
+	for(var i = 0 ; i < invo_item ; i++){
+        if($('#invoice_num' + i).val() == ''){
+            alert('發票號碼是必填欄位!');
+            return false;
+        }
+
+        var re = /^[a-zA-Z]{2}-[0-9]{8}$/;
+        if (!re.test($('#invoice_num' + i).val())){
+        	$('#invoice_num' + i).val('');
+        	alert('發票號碼格式錯誤!');
+            return false;
+        }
+	}
+    
+    if($('#invoice_name').val() == ''){
+        alert('姓名是必填欄位!');
+        return false;
+    }
+
+    if($('#invoice_age').val() == ''){
+        alert('年齡是必填欄位!');
+        return false;
+    }
+
+    if($('#invoice_tel').val() == ''){
+        alert('電話是必填欄位!');
+        return false;
+    }
+
+    var re = /^[0-9]{9}$/;
+    var re2 = /^[0-9]{10}$/;
+    if (!(re.test($('#invoice_tel').val()) || re2.test($('#invoice_tel').val()))){
+    	alert('電話號碼格式錯誤!');
+        return false;
+    }
+
+    if($('select[name=invoice_county]').val() == ''){
+        alert('縣市是必填欄位!');
+        return false;
+    }
+
+    if($('select[name=invoice_district]').val() == ''){
+        alert('鄉鎮市區是必填欄位!');
+        return false;
+    }
+
+    if($('#invoice_addr').val() == ''){
+        alert('地址詳細是必填欄位!');
+        return false;
+    }
+
+    if(!$('#invoice_chk').prop("checked")){
+    	alert('請確認已閱讀活動辦法');
+        return false;
+    }
+    return true;
+}
+
+function close_award_pop(){
+    $('.share').hide();
+    $('.award').hide();
+}
 
 </script>
 <div class="loading" style="z-index:99999;">
@@ -50,77 +420,86 @@ $(document).ready(function() {
 <!--loading_end-->
     
 
-    
-<!--index-->
-<div class="index" style="">
-    <div class="content">
-        <div class="title01">
-            <h2>
-                <img src="m_images/index_04.gif" alt="有ㄒㄧㄠˋ俱樂部">
-            </h2>
-            <img src="m_images/m_index01.png">
+<div id="fullpage">
+	<div class="section">
+        <!--index-->
+        <div class="index">
+            <div class="content">
+                <div class="title01">
+                    <h2>
+                        <img src="m_images/index_04.gif" alt="有ㄒㄧㄠˋ俱樂部">
+                    </h2>
+                    <img src="m_images/m_index01.png">
+                </div>
+                 <a title="登錄發票泰國雙人遊等你來拿" class="invoice_btn" onclick="get_invoice();">
+                    <img src="m_images/invo_btn.png">
+                </a>
+                <a title="KOH時刻，立即見，ㄒㄧㄠˋ" class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</a>
+            </div>
         </div>
-         <a href="" title="登錄發票泰國雙人遊等你來拿" class="invoice_btn">
-            <img src="m_images/invo_btn.png">
-        </a>
-        <a href="" title="KOH時刻，立即見，ㄒㄧㄠˋ" class="next_btn">KOH時刻，立即見，ㄒㄧㄠˋ</a>
+        <!--index_end-->
+    </div>
+    <div class="section">
+    	<!--mov01-->
+        <div class="mov01">
+            <div class="content">
+                <h3 class="object01">
+                    <img src="m_images/m_mov01.png">
+                </h3>
+                <div class="object02">
+                    <img src="m_images/mov01_cnt03.gif">
+                </div>
+            </div>
+        </div>
+        <!--mov01_end-->
+    </div>
+    <div class="section">
+    	<!--mov02-->
+        <div class="mov02">
+            <div class="content">
+                <h3 class="object01">
+                    <img src="m_images/m_mov02.png">
+                </h3>
+                <div class="object02">
+                    <img src="m_images/mov02_cnt01.gif">
+                </div>
+            </div>
+        </div>
+        <!--mov02_end-->
+    </div>
+    <div class="section">
+    	<!--mov03-->
+        <div class="mov03">
+            <div class="content">
+                <h3 class="object01">
+                    <img src="m_images/m_mov03.png">
+                </h3>
+                <div class="object02">
+                    <img src="m_images/mov03_cnt03.gif">
+                </div>
+            </div>
+        </div>
+        <!--mov01_end-->
     </div>
 </div>
-<!--index_end-->
-    
-<!--mov01-->
-<div class="mov01" style="display:none;">
-    <div class="content">
-        <h3 class="object01">
-            <img src="m_images/m_mov01.png">
-        </h3>
-        <div class="object02">
-            <img src="m_images/mov01_cnt03.gif">
-        </div>
-        <div class="object03">
-            <a href="" title="登錄發票泰國雙人遊等你來拿">
-                <img src="m_images/invo_btn.png">
-            </a>
-        </div>
-    </div>
-</div>
-<!--mov01_end-->
 
-<!--mov02-->
-<div class="mov02" style="display:none;">
+<!-- topbtn -->
+<div class="topbtn" style="display:none;">
     <div class="content">
-        <h3 class="object01">
-            <img src="m_images/m_mov02.png">
-        </h3>
-        <div class="object02">
-            <img src="m_images/mov02_cnt01.gif">
-        </div>
         <div class="object03">
-            <a href="" title="登錄發票泰國雙人遊等你來拿">
+            <a title="登錄發票泰國雙人遊等你來拿" onclick="get_invoice();">
                 <img src="m_images/invo_btn.png">
             </a>
         </div>
     </div>
 </div>
-<!--mov02_end-->
+<!-- topbtn_end -->
 
-<!--mov03-->
-<div class="mov03" style="display:none;">
-    <div class="content">
-        <h3 class="object01">
-            <img src="m_images/m_mov03.png">
-        </h3>
-        <div class="object02">
-            <img src="m_images/mov03_cnt03.gif">
-        </div>
-        <div class="object03">
-            <a href="" title="登錄發票泰國雙人遊等你來拿">
-                <img src="m_images/invo_btn.png">
-            </a>
-        </div>
-    </div>
-</div>
-<!--mov01_end-->
+
+
+
+
+
     
 <!--登錄發票-->
 <div class="invo" style="display:none;">
@@ -135,67 +514,54 @@ $(document).ready(function() {
             <br>※不分獎項，每人僅限得獎一次
         </p>
     </div>
+    <form id="invoice_form" action="" method="post">
+    <input type="hidden" id="invoice_fb_id" name="invoice_fb_id" />
     <div class="invo_min">
-        <ul>
+        <ul id="invoice_box">
             <li class="normal">
                 發票編號<br>
-                <input id="" type="text" value="" class="t_box">
-                <a href="" title="新增" class="add_in">新增</a>
+                <input id="invoice_num0" name="invoice_num[]" type="text" value="" class="t_box">
+                <a title="新增" class="add_in">新增</a>
             </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
-            <li class="add_invo">
-                <input id="" type="text" value="" class="t_box">
-            </li>
+        </ul>
+        <ul>
             <li class="add_invo">
                 <em class="tip">KOH寶叮寧：點選+號一次最多登入5張發票編號。</em>
             </li>
             <li class="add_inf">
                 <span>姓名</span><br>
-                <input id="" type="text" value="" class="t_box">
+                <input id="invoice_name" name="invoice_name" type="text" value="" class="t_box">
             </li>
             <li class="add_inf">
                 <span>性別</span>
-                <input id="" type="checkbox" value="" class="checkbox">女
-                <input id="" type="checkbox" value="" class="checkbox">男
+                <input id="invoice_sex0" name="invoice_sex" type="radio" value="0" class="checkbox" checked="checked">女
+                <input id="invoice_sex1" name="invoice_sex" type="radio" value="1" class="checkbox">男
             </li>
             <li class="add_inf">
                 <span>年齡</span><br>
-                <input id="" type="text" value="" class="t_box">
+                <input id="invoice_age" name="invoice_age" type="text" value="" class="t_box">
             </li>
             <li class="add_inf">
                 <span>電話</span><br>
-                <input id="" type="text" value="" class="t_box">
+                <input id="invoice_tel" name="invoice_tel" type="text" value="" class="t_box">
             </li>
             <li class="add_inf add">
                 <span>通訊地址</span><br>
-                <select id="">
-                  <option selected="" value="縣市">縣市</option>
-                  <option value="台北市">台北市</option>
-                </select>
-                <select id="">
-                  <option selected="" value="鄉鎮市區">鄉鎮市區</option>
-                  <option value="中山區">中山區</option>
-                </select>
+                <span id="twzipcode"></span>
             </li>
             <li class="add_inf inf">
-                <input id="" type="text" value="" class="t_box a_box">
+                <input id="invoice_addr" name="invoice_addr" type="text" value="" class="t_box a_box">
             </li>
             <li class="agree">
-                <input id="" type="checkbox" value="">我已閱讀過活動辦法，並同意主辦單位運用此資料進行贈獎事宜聯繫
+                <input id="invoice_chk" name="invoice_chk" type="checkbox" value="">
+                <label for="invoice_chk">我已閱讀過活動辦法，並同意主辦單位運用此資料進行贈獎事宜聯繫</label>
             </li>
             <li class="enter">
-                <a href="" title="確認送出">確認送出</a>
+                <a title="確認送出" onclick="ajax_invoice();">確認送出</a>
             </li>
         </ul>
     </div>
+    </form>
 </div>
 <!--登錄發票_end-->
 
@@ -209,7 +575,7 @@ $(document).ready(function() {
             <img src="m_images/invoice_06.png">
         </h4>
         <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
-        <a href="" title="">確定</a>
+        <a title="" onclick="close_award_pop();">確定</a>
     </div>
 </div>
 <!--獲得抽獎資格_end-->
@@ -222,19 +588,18 @@ $(document).ready(function() {
         </h3>
     </div>
     <div class="msg_min">
-        假內文<br>
-        假內文<br>
-        假內文<br>
-        假內文<br>
+        <iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&width=500&show_text=true&appId=543797882389004&height=520" width="100%" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F802976773165920&width=500&show_text=true&appId=543797882389004&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F808866192576978&width=500&show_text=true&appId=543797882389004&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
     </div>
     <div class="msg_bottom">
         <div class="fb">
-            <a href="" title="" class="share">分享</a>
-            <a href="" title="" class="like">讚</a>
+            <a title="" class="share" onclick="ajax_video();">分享</a>
+<!--             <a href="" title="" class="like">讚</a> -->
             <div class="clearboth"></div>
         </div>
-            <a href="" title="" class="left"></a>
-            <a href="" title="" class="right"></a>
+            <a onclick="changeFbMsg('left');" title="" class="left"></a>
+            <a onclick="changeFbMsg('right');" title="" class="right"></a>
             <div class="clearboth"></div>
     </div>
 </div>
@@ -257,351 +622,8 @@ $(document).ready(function() {
 </div>
 <!--恭喜分享成功_end-->
 
-<!--活動辦法-->
-<div class="rule_page" style="display:none;">
-    <div class="content">
-        <div class="title">
-            <h3 ><img src="m_images/m_rule03.png"></h3>
-        </div>
-        <div class="rule_cont">
-            <h4>
-                <img src="m_images//invoice_05.png">
-            </h4>
-            <ul>
-                <li class="title">活動辦法</li>
-                <li class="cont">活動期間內不限通路購買KOH COCONUT酷椰嶼椰子汁或香椰脆片任一產品之發票(發票上需有「KOH COCONUT 」商品)，登錄發票並填寫資料，即可獲得抽獎機會！</li>
-                <li class="cont">
-                    ※每人不限登錄一張發票，登錄越多，中獎機率越高<br>
-                    ※發票日期須為2016/05/09～2016/06/08內，期間外則無效<br>
-                    ※不分獎項，每人僅限得獎一次
-                </li>
-            </ul>
-            <ul>
-                <li class="title">活動獎項</li>
-                <li class="cont">1. 泰國五星艾美雙人假期：2組</li>
-                <li class="cont">2. World Gym世界健身俱樂部1年會員：2名</li>
-                <li class="cont">3. 多款【TOUCH AERO塔奇艾羅】商品：共13名</li>
-                <li class="cont">4.【TOUCH AERO塔奇艾羅】現金禮券：15名</li>
-            </ul>
-            <ul>
-                <li class="title">活動獎項</li>
-                <li class="cont">1. 泰國五星艾美雙人假期：2組</li>
-                <li class="cont">2. World Gym世界健身俱樂部1年會員：2名</li>
-                <li class="cont">3. 多款【TOUCH AERO塔奇艾羅】商品：共13名</li>
-                <li class="cont">4.【TOUCH AERO塔奇艾羅】現金禮券：15名</li>
-            </ul>
-            <ul>
-                <li class="title">詳細獎項介紹：</li>
-                <li class="cont">泰國五星艾美雙人假期：市值30,000元/2組<br>本行程為【可樂旅遊】團體優惠自由行</li>
-                <li class="cont">【內容包含】<br>
-                    1. 桃園-曼谷，來回團體經濟艙機票。<br>
-                    2. 曼谷機場至飯店單程接機<br>
-                    3. 曼谷五星艾美酒店三晚，兩人一室，附飯店早餐。
-                </li>
-                <li class="cont">【內容不包含】<br>
-                    1. 不含兩地機場稅、燃油附加費、保險、代辦服務費等，每人需另付NT$3,000<br>
-                    2. 不含泰國簽證費，每人需另付NT$1,200。<br>
-                    3. 不含個人消費。<br>
-                    4. 不含返國當日酒店至機場送機服務。
-                </li>
-                <li class="cont">【注意事項】<br>
-                    ※ 機票限團去團回，無法更改日期、天數。<br>
-                    ※ 限2016年9月、10月出發 (國定連續假日無法使用)<br>
-                    ※ 無法事先指定坐席或劃位；需依照航空公司櫃台排序為準。<br>
-                    ※ 此團型六人以上即可成行。<br>
-                    ※ 不接受累積航空公司里程活動。<br>
-                    ※ 此行程為兩人同行安排，若單數報名或指定單人房時須補單人房差價。<br>
-                    ※ 此行程房價只適用於華人，持外國護照需酒店將會有加價。<br>
-                    ※ 2-12歲兒童若佔床與大人同價，不佔床者不包含早餐。<br>
-                    ※ 不接受一大加不佔床一小報名。<br>
-                    ※ 接機服務為合車安排，不需額外支付服務費，若需自行前往飯店均無費可退。
-                </li>
-                <li class="cont">World Gym世界健身俱樂部1年會員：市值38,632元/2名</li>
-                <li class="cont">多款【TOUCH AERO塔奇艾羅】商品：<br>
-                    A. Touch Aero女款有氧六分休閒褲 市值1,780元/1名<br>
-                    B. Touch Aero女款有氧T恤罩衫 市值1,480元/1名<br>
-                    C. Touch Aero環保瑜珈舖巾 市值899元/1名<br>
-                    D. Touch Aero多功能無縫頭巾 市值299元/10名<br>
-                </li>
-                <li class="cont">【TOUCH AERO塔奇艾羅】現金禮券：市值200元/15名</li>
-            </ul>
-        </div>
-        <div class="rule_cont">
-            <h4><img src="m_images/msg_02.png"></h4>
-            <ul>
-                <li class="title">活動辦法：</li>
-                <li class="cont">
-                    活動期間內觀看【喝KOH 有ㄒㄧㄠ\】影片並<br>
-                    1.首先，幫「KOH COCONUT」粉絲團按個讚，中獎才收得到獲獎資訊喔。<br>
-                    2.再來留言「_________時我喝KOH，因為_________ ！」於本貼文下方。<br>
-                    3.最後分享影片至個人塗鴉牆 (注意：貼文請設為公開)
-                </li>
-                <li class="cont">
-                    ※每人每支影片僅限一次抽獎機會。<br>
-                    (例如：小明留言分享了籃球、瑜珈、喝酒篇各1次，即獲得3次抽獎機會；小華留言分享了籃球、瑜珈、喝酒篇各2次，還是獲得3次抽獎機會)
-                    ※不分獎項，每人僅限得獎一次
-                </li>
-            </ul>
-            <ul>
-                <li class="title">活動獎項：</li>
-                <li class="cont">1. 泰國五星艾美雙人假期：1組</li>
-                <li class="cont">2. World Gym世界健身俱樂部6個月會員：2名</li>
-                <li class="cont">3. World Gym世界健身俱樂部3個月會員：2名</li>
-                <li class="cont">4.多種【TOUCH AERO塔奇艾羅】經典包款：共7名</li>
-                <li class="cont">5.【TOUCH AERO塔奇艾羅】現金禮券：15名</li>
-            </ul>
-            <ul>
-                <li class="title">得獎公告：</li>
-                <li class="cont">得獎名單將於2016/6/15統一公布於活動網站及粉絲團</li>
-            </ul>
-            <ul>
-                <li class="title">領獎辦法：</li>
-                <li class="cont">得獎名單公布後，主辦單位將會以臉書訊息聯繫中獎人，請中獎人務必於2016/7/15前回覆及提供領獎相關資料，一旦資料確認無誤後將寄發贈品。</li>
-                <li class="cont">(注意：若為發票登錄活動中獎者，請將發票影本以傳真、郵寄、email的方式提供給主辦單位核對。其發票日期需為活期間內，若遺失或無法提供中獎發票影本即視為放棄得獎權利。)(注意：若未在2016/7/15前回覆訊息或連繫主辦單位者，將喪失得獎資格，主辦單位不須負任何相關責任。)。
-                </li>
-            </ul>
-            <ul>
-                <li class="title">注意事項：</li>
-                <li class="cont">1.本活動主辦單位為英屬維爾京群島商寶貝國際有限公司台灣分公司。</li>
-                <li class="cont">
-                    2.主辦單位有權檢視各活動參加者之活動參與行為及中獎情形是否涉嫌     
-                    以任何其他不正當的方式意圖以進行不實或虛偽活動參與行為，活動
-                    參加者因上述情形所獲得之活動資格及獎額，主辦單位保有取消得獎
-                    資格的權利，並保留法律追訴權。
-                </li>
-                <li class="cont">3.若中獎者未提供資料或資料有任何不實，導致無法通知中獎者或獎品無法寄送，視同中獎者放棄得獎權利並自負其責。</li>
-                <li class="cont">4.中華民國稅法規定，贈品金額超過＄1,000 (含)以上者，需開立扣繳憑單；贈品金額超過$20,000(含) 以上者，須繳交10%機會中獎稅。</li>
-                <li class="cont">5.獎品寄送後若無人領取導致郵局退回，將不再寄送第二次。郵寄或運送過程中，所造成的毀壞、遲遞 、錯遞或遺失，主辦單位恕不負責。</li>
-                <li class="cont">6.本活動之所有獎項不得轉換、轉讓或折換現金。活動詳細辦法及獎項
-                    細節內容，概以本活動網站所公佈內容為準，如遇不可抗力之因素，
-                    主辦單位保留修改活動與獎項細節的權利，並有權對本活動所有事宜
-                    作出解釋或裁決，無須做事前之通知。
-                </li>
-                <li class="cont">7.嚴禁惡意之電腦程式或其它破壞活動公平性之行為，若經查覺主辦單位有權取消其參加資格並追回獎品。</li>
-                <li class="cont">8.本活動限中華民國台灣地區(台澎金馬)之居民參加。主辦單位保留取消、變更或解釋活動內容之權利。主辦單位以及所屬配合之活動執行單位、廣告廠商的員工恕不得參加本活動。</li>
-            </ul>
-            <ul>
-                <li class="title">聯絡資訊：</li>
-                <li class="cont">電話：0800-018-666【週一~週五, 9:00-17:30, 12:00-13:00為午休時間】</li>
-                <li class="cont">地址：100台北市中正區北平東路30號14樓之1</li>
-                <li class="cont">聯絡信箱：info@babicorp.com</li>
-                <li class="cont">傳真：(02) 2394-9598</li>
-                <li class="cont">寶貝國際有限公司 行銷部 　收</li>
-            </ul>
-        </div>
-    </div>    
-</div>
-<!--活動辦法_end-->
-
-<!--俱樂部成員-->
-<div class="club_member" style="display:none;">
-    <div class="content">
-        <div class="title">
-            <h3>
-                <img src="m_images/m_club01.png">
-            </h3>
-        </div>
-        <div class="tip">
-            <img src="m_images/m_club02.png">
-        </div>
-        <div class="cont_min">
-            <ul>
-                <li class="product01">
-                    <img src="m_images/m_put01.png">
-                </li>
-                <li class="product02">
-                    <img src="m_images/m_put02.png">
-                </li>
-                <li class="product03">
-                    <img src="m_images/m_put03.png">
-                </li>
-                <li class="product04">
-                    <img src="m_images/m_put04.png">
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer">
-        <a href="" title="WORLD GYM" class="world">
-            <img src="m_images/wg_logo.png">
-        </a>
-        <a href="" title="TOUCH AREO" class="touch">
-            <img src="m_images/ta_logo.png">
-        </a>
-        <div class="copyright">Copyright © 2016  BABI  Inc. All Rights Reserved. Designed by Penetration Internet Agency</div>
-        <div class="clearboth"></div>
-    </div>
-</div>    
-<!--俱樂部成員_end-->
-
-<!--得獎名單-->
-<div class="award_list" style="display:none;">
-    <div class="pop_top">
-        <h3>
-            <img src="m_images/m_award01.png">
-        </h3>
-    </div>
-    <div class="left_list">
-        <h4 class="title">
-            <img src="m_images/rule_menu01_1.png">
-        </h4>
-        <ul>
-            <li class="title">泰國五星艾美雙人假期</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <div class="clearboth"></div>
-        </ul>
-        <ul>
-            <li class="title">WORLD GYM世界健身俱樂部1年會員</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <div class="clearboth"></div>
-        </ul>
-        <ul>
-            <li class="title">多款TOUCH AERO塔奇艾羅商品</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <div class="clearboth"></div>
-        </ul>
-        <ul>
-            <li class="title">TOUCH AERO環保瑜珈舖巾</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <div class="clearboth"></div>
-        </ul>
-        <ul>
-            <li class="title">TOUCH AERO女款有氧T恤罩衫</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <li class="name">王小明</li>
-            <li class="number">0985XXX972</li>
-            <div class="clearboth"></div>
-        </ul>
-    </div>
-    <div class="right_list">
-        <h4 class="title">
-            <img src="m_images/rule_menu02_1.png">
-        </h4>
-        <ul>
-            <li class="title">泰國五星艾美雙人假期</li>
-            <li class="name">王小明</li>
-            
-        </ul>
-        <ul>
-            <li class="title">WORLD GYM世界健身俱樂部6個月會員</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-        </ul>
-        <ul>
-            <li class="title">WORLD GYM世界健身俱樂部3個月會員</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-        </ul>
-        <ul>
-            <li class="title">TOUCH AERO塔奇艾羅現金禮券</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-        </ul>
-        <ul>
-            <li class="title">多款TOUCH AERO塔奇艾羅商品</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-            <li class="name">王小明</li>
-        </ul>
-    </div>
-    <div class="pop_bottom"></div>
-</div>
-<!--得獎名單_end-->
-<!--固定式按鈕-->  
-<div class="fix_btn" style="">
-    <div title="" class="logo">
-        <img src="m_images/logo_w.png">
-    </div>
-    <div class="m_btn" style="z-index:111;">
-        <div href="" title="" styl="" class="open">
-            <img src="m_images/m_btn.png">
-        </div>
-        <div href="" title="" styl="" class="back">
-            <img src="m_images/invoice_02.png">
-        </div>
-    </div>
-    <div class="menu" style="z-index:111;">
-        <ul>
-            <li>
-                <a href="" title="活動辦法" class="rule">
-                    活動辦法
-                    <img src="m_images/m_menu01.png">
-                </a>
-            </li>
-            <li>
-                <a href="" title="俱樂部成員" class="club">
-                    俱樂部成員
-                    <img src="m_images/m_menu02.png">
-                </a>
-            </li>
-            <li>
-                <a href="" title="得獎名單" class="awar">
-                    得獎名單
-                    <img src="m_images/m_menu03.png">
-                </a>
-            </li>
-            <li>
-                <a href="" title="KOH COCNUT粉絲團" class="fb_c">
-                    KOH COCNUT粉絲團
-                    <img src="m_images/m_menu04.png">
-                </a>
-            </li>
-        </ul>
-    </div>    
-</div>
+<!--固定式按鈕--> 
+<?php require_once 'm_menu.php';?>
 <!--固定式按鈕_end--> 
 </body>
 </html>

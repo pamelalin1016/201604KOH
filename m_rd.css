@@ -18,3 +18,82 @@
 .fix_btn .m_btn .back {
     display:none;
 }
+
+.topbtn {
+    width: 100%;
+    height: 100vh;
+    /*position: fixed;*/
+}
+
+.topbtn .content {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 20%;
+}
+
+.topbtn .content .object03 {
+	width: 120px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.topbtn .content .object03 img {
+    width: 100%;
+}
+
+.mov01 .content .object02 {
+    position: relative;
+    top: -83px;
+    right: 0px;
+}
+
+.mov01 .content .object02 img {
+	width: 72%;
+}
+
+.mov02 .content .object02 {
+    position: relative;
+    top: -172px;
+    right: 30px;
+}
+
+.mov02 .content .object02 img {
+	width: 40%;
+}
+
+.mov03 .content .object02 {
+    position: relative;
+    top: -149px;
+    right: 25px;
+}
+
+.mov03 .content .object02 img {
+	width: 39%;
+}
+
+.invo, .award, .koh_msg, .share_iframe{
+	z-index: 1000;
+    position: absolute;
+    top: 0;
+    overflow:auto;
+}
+
+.zipcode {
+	display:none;
+}
+
+.share_iframe {
+	width: 100%;
+    height: 100vh;
+}
+
+.share_iframe #share_iframe1, 
+.share_iframe #share_iframe2,
+.share_iframe #share_iframe3 {
+	width: 100%;
+    height: 100vh;
+}
+
+
+
+
