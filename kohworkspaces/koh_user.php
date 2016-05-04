@@ -1,10 +1,4 @@
 <?php
-ini_set('display_errors', '0');
-// Configuration
-if (require("../config.php")) {
-    require("../config.php");
-}
-
 require_once('__init.php');
 require_once(DIR_TO.'library/db.php');
 require_once(DIR_TO.'library/pagination.php');
@@ -124,7 +118,7 @@ $pagination->page                  = $page;
 $pagination->limit                 = $config_limit;
 $pagination->text_next             = '下一頁';
 $pagination->text_prev             = '上一頁';
-$pagination->url                   = 'user.php?'.$url.'&page={page}';
+$pagination->url                   = 'koh_user.php?'.$url.'&page={page}';
 $pagination                        = $pagination->render();
 
 
@@ -205,7 +199,7 @@ require("head.php");
 		            	</tbody>
 		            </table>
 		        </div>
-		        <?php //echo $page->getPageFoot();?>
+		        <?php echo $pagination;?>
             </div>
             <!--/span-->
         </div>

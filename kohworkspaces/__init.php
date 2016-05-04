@@ -1,4 +1,12 @@
 <?php
+ini_set('display_errors', '0');
+define('SET_SETTING_FILE', '../');
+
+// Configuration
+if (file_exists(SET_SETTING_FILE.'config.php')) {
+    require_once(SET_SETTING_FILE."config.php");
+}
+
 if(isset($_GET['logout']) && $_GET['logout'] == 'logout'){
     $_SERVER['PHP_AUTH_USER'] = null;
     $_SERVER['PHP_AUTH_PW'] = null;

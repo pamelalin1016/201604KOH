@@ -8,6 +8,7 @@ $(document).ready(function() {
 	
     $(".loading").css({"display":"none"});
     $('.fix_btn').css({"display":"block"});
+    $('.logo a img').attr('src','m_images/logo_b.png');
     $(".club_member").css({"display":"block"});
     $(".fix_btn .m_btn .open").click(function() {
         $(".fix_btn .menu").animate({"left":"20%"});

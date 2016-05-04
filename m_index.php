@@ -30,17 +30,18 @@ $(document).ready(function() {
 			$('.fix_btn').show();
 			if(index == 1){
 				$('.topbtn').hide();
-				$('.logo_btn a').attr('class','');
+				$('.logo a img').attr('src','m_images/logo_w.png');
 			}
 		},
 		onLeave: function(index,nextIndex,direction){
 			if(nextIndex == 1){
 				$('.topbtn').hide();
-				$('.logo_btn a').attr('class','');
+				$('.logo a img').attr('src','m_images/logo_w.png');
+				
 			}else{
 
 				$('.topbtn').show();
-				$('.logo_btn a').attr('class','blue');
+				$('.logo a img').attr('src','m_images/logo_b.png');
 			}
 			
 		},
