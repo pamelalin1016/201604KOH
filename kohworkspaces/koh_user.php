@@ -207,15 +207,6 @@ require("head.php");
 
     </div>
 	
-	<script type="text/javascript">
-	function del(id,name)
-	{
-		if( confirm( '您確定要刪除 [' + name + '] 嗎?' ) )
-		{
-			window.location.href='demo_add_mod_act.php?act=del&id='+id;
-		}
-	}
-	</script>
 <?php 
 require("foot.php");
 function ft($data){

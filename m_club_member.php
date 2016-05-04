@@ -5,6 +5,11 @@ require_once 'm_header.php';
 <script>
 $(document).ready(function() {
 
+	trackEvent('次頁', 'PV', 'MB-產品介紹-椰子水');
+	trackEvent('次頁', 'PV', 'MB-產品介紹-原味');
+	trackEvent('次頁', 'PV', 'MB-產品介紹-哇沙米');
+	trackEvent('次頁', 'PV', 'MB-產品介紹-巧克力');
+		
 	
     $(".loading").css({"display":"none"});
     $('.fix_btn').css({"display":"block"});

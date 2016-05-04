@@ -5,6 +5,10 @@ require_once 'm_header.php';
 <script>
 $(document).ready(function() {
 
+	trackEvent('次頁', 'PV', 'MB-活動辦法-登入發票');
+	trackEvent('內容頁', 'PV', 'MB-活動辦法-分享超KOH時刻');
+	trackEvent('內容頁', 'PV', 'MB-活動辦法-其他說明');
+		
 	
     $(".loading").css({"display":"none"});
     $('.fix_btn').css({"display":"block"});

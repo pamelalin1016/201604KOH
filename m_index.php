@@ -1,26 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>KOH</title>
-<meta name="author" content="">
-<meta name="copyright" content="">
-<meta name="keywords" content="koh coconut 有ㄒㄧㄠˋ俱樂部">
-<meta name="description" content="koh coconut 有ㄒㄧㄠˋ俱樂部，想與部長”KOH寶”一樣活力充沛嗎?來有ㄒㄧㄠˋ聚樂部就對了!分享超KOH時刻，就有機會獲得泰國雙人假期!登錄發票泰國雙人遊等你來拿">
-<!--<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="js/jquery.fullPage.js"></script>
-<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
-<link href="reset.css" rel="stylesheet" type="text/css">
-<link href="m_koh.css" rel="stylesheet" type="text/css">
-<link href="m_rd.css" rel="stylesheet" type="text/css">
+<?php 
+require_once 'm_header.php';
+?>
 
-</head>
-<body>
-<!--loading頁-->
 <script>
 $(document).ready(function() {
 	$('.loading').hide();
@@ -31,6 +12,20 @@ $(document).ready(function() {
 			if(index == 1){
 				$('.topbtn').hide();
 				$('.logo a img').attr('src','m_images/logo_w.png');
+				trackEvent('首頁', 'PV', '首頁Index');
+				
+			}
+
+			if(index == 2){
+				trackEvent('次頁', 'PV', 'MB-瑜珈篇影片');
+			}
+
+			if(index == 3){
+				trackEvent('次頁', 'PV', 'MB-籃球篇影片');
+			}
+
+			if(index == 4){
+				trackEvent('次頁', 'PV', 'MB-喝酒篇影片');
 			}
 		},
 		onLeave: function(index,nextIndex,direction){
@@ -90,6 +85,13 @@ function changeFbMsg(type){
 		}
 	}
 
+	if(now_msg == 1)
+	trackEvent('內容頁', 'PV', 'MB-瑜珈篇影片觀看頁');
+	if(now_msg == 2)
+	trackEvent('內容頁', 'PV', 'MB-籃球篇影片觀看頁');
+	if(now_msg == 3)
+	trackEvent('內容頁', 'PV', 'MB-喝酒篇影片觀看頁');
+
 	$('#fb_msg1, #fb_msg2, #fb_msg3').hide();
 	$('#fb_msg'+now_msg).show();
 	fb_msg = now_msg;
@@ -97,9 +99,12 @@ function changeFbMsg(type){
 
 var invo_item = 1;
 function get_invoice(){
+	trackEvent('首頁', 'Click', 'MB-登入發票');
+	
     if(fb_id == ''){
     	get_facebook();
     }
+    trackEvent('內容頁', 'PV', 'MB-發票登入');
     
     $('.invo').show();
     
@@ -133,7 +138,7 @@ function get_share(){
     }
 
     $('.koh_msg').show();
-
+    trackEvent('內容頁', 'PV', 'MB-瑜珈篇影片觀看頁');
     $('.koh_msg .msg_top a').on('click',function(){
         $('.pop_background').hide();
         $('.koh_msg').hide();
@@ -281,6 +286,8 @@ function ajax_invoice(){
 			if(response.s == '1'){
 				$('.invo').hide();
 				$('.award').show();
+				trackEvent('內容頁', 'PV', 'MB-發票登入成功');
+				trackEvent('內容頁', 'Click', 'MB-發票成功送出');
 
 				$('.invo_min .enter a').show();
 			}else{
@@ -310,6 +317,14 @@ function ajax_video(){
     	}
     }
     $('.koh_msg .msg_bottom a.share').hide();
+
+    if(fb_msg == 1)
+    trackEvent('內容頁', 'Click', 'MB-瑜珈篇影片分享');
+    if(fb_msg == 2)
+    trackEvent('內容頁', 'Click', 'MB-籃球篇影片分享');
+    if(fb_msg == 3)
+    trackEvent('內容頁', 'Click', 'MB-喝酒篇影片分享');
+
     
 	$.ajax({
         url: 'ajax.php?mod=video',
@@ -412,13 +427,7 @@ function close_award_pop(){
 }
 
 </script>
-<div class="loading" style="z-index:99999;">
-    <div class="kohman">
-        <img src="m_images/loading_koh.png">
-    </div>    
-</div>
 
-<!--loading_end-->
     
 
 <div id="fullpage">
@@ -444,7 +453,7 @@ function close_award_pop(){
     	<!--mov01-->
         <div class="mov01">
             <div class="content">
-                <h3 class="object01">
+                <h3 class="object01" onclick="trackEvent('次頁', 'Click', 'MB-瑜珈篇影片觀看');">
                     <img src="m_images/m_mov01.png">
                 </h3>
                 <div class="object02">
@@ -458,7 +467,7 @@ function close_award_pop(){
     	<!--mov02-->
         <div class="mov02">
             <div class="content">
-                <h3 class="object01">
+                <h3 class="object01" onclick="trackEvent('內容頁', 'PV', 'MB-籃球篇影片觀看頁');trackEvent('次頁', 'Click', 'MB-籃球篇影片觀看');">
                     <img src="m_images/m_mov02.png">
                 </h3>
                 <div class="object02">
@@ -472,7 +481,7 @@ function close_award_pop(){
     	<!--mov03-->
         <div class="mov03">
             <div class="content">
-                <h3 class="object01">
+                <h3 class="object01" onclick="trackEvent('內容頁', 'PV', 'MB-喝酒篇影片觀看頁');trackEvent('次頁', 'Click', 'MB-喝酒篇影片觀看');">
                     <img src="m_images/m_mov03.png">
                 </h3>
                 <div class="object02">
@@ -558,7 +567,7 @@ function close_award_pop(){
                 <label for="invoice_chk">我已閱讀過活動辦法，並同意主辦單位運用此資料進行贈獎事宜聯繫</label>
             </li>
             <li class="enter">
-                <a title="確認送出" onclick="ajax_invoice();">確認送出</a>
+                <a title="確認送出" onclick="ajax_invoice();trackEvent('內容頁', 'Click', 'MB-發票確認送出');">確認送出</a>
             </li>
         </ul>
     </div>

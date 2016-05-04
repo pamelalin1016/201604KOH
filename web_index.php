@@ -14,6 +14,7 @@
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
 <script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="ga.js"></script>
 <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="koh.css" rel="stylesheet" type="text/css">
 <link href="pop.css" rel="stylesheet" type="text/css">
@@ -33,10 +34,10 @@
 <!--固定式按鈕-->
 <div class="fix_btn" style="display:none;">
     <h1 class="logo_btn">
-        <a href="http://kohcoconut.com/zh-hant/" title="KOH COCONUT" class="blue" target="_blank">KOH COCONUT</a>
+        <a href="http://kohcoconut.com/zh-hant/" title="KOH COCONUT" class="blue" target="_blank" onclick="trackEvent('首頁', 'Click', 'PC-官網連結');">KOH COCONUT</a>
     </h1>
     <div class="fb_btn">
-        <a href="https://www.facebook.com/KohCoconut/" title="facebook" target="_blank">facebook</a>
+        <a href="https://www.facebook.com/KohCoconut/" title="facebook" target="_blank" onclick="trackEvent('首頁', 'Click', 'PC-紛絲專業連結');">facebook</a>
     </div>
     <div class="invoice" >
         <a title="登錄發票，泰國雙人遊等你來拿" class="invo_b sbtn" onclick="get_invoice();">
@@ -334,7 +335,6 @@
 		-->
 		        <div class="clearboth"></div>
 		    </div>
-		    <div class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</div>
 <!-- 		    <div class="video_top"></div> -->
 		    <div class="video_box">
     		    <div class="video_box1">
@@ -353,6 +353,7 @@
         		    </video>
     		    </div>
 		    </div>
+		    <div class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</div>
 		</div>
 		<!--index_end-->
 	</div>
@@ -368,13 +369,13 @@
 		        <div class="object06"></div>
 		        <div class="object07">
 		        	<div>
-		            	<a title="影片分享" onclick="get_share();"></a>
+		            	<a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-瑜珈篇影片觀看');get_share();"></a>
 		            </div>
 		        </div>
+                <div class="kohbg01"></div>
+                <div class="kohbg02"></div>
+                <div class="kohbg03"></div>
 		    </div>
-		    <div class="kohbg01"></div>
-		    <div class="kohbg02"></div>
-		    <div class="kohbg03"></div>
 		</div>
 		<!--mov01_end-->
 	</div>
@@ -385,7 +386,7 @@
 		    <div class="content">
 		        <div class="object01">
 		        	<div>
-		            	<a title="影片分享" onclick="get_share();"></a>
+		            	<a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-籃球篇影片觀看');get_share();"></a>
 		            </div>
 		        </div>
 		        <div class="object02"></div>
@@ -408,7 +409,7 @@
 		    <div class="content">
 		        <div class="object01">
 		        	<div>
-		            	<a title="影片分享" onclick="get_share();"></a>
+		            	<a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-喝酒篇影片觀看');get_share();"></a>
 		            </div>
 		        </div>
 		        <div class="object02"></div>

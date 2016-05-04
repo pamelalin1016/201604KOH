@@ -27,7 +27,7 @@
                     <p class="navbar-text pull-right">歡迎登入&nbsp;&nbsp;&nbsp;<a href="koh_user.php?logout=logout" class="btn btn-info">登出</a></p>
                     <ul class="nav">
                     	<li><a href="koh_user.php">會員列表</a></li>
-                    	<li><a href="#">活動總覽</a></li>
+                    	<li><a href="koh_report.php">活動總覽</a></li>
                     </ul>
                 </div>
                 

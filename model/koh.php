@@ -82,4 +82,38 @@ class ModelActivityKoh{
         $sql .= "WHERE `id` = ".$id;
         $query = $this->db->query($sql);
     }
+
+    public function getKohReportInvoice($dt = 0) {
+        $sql = "SELECT count(id) as invoice_cnt,COUNT(DISTINCT user_id) as invoice_user_cnt FROM `activity_koh_invoice` ";
+        $sql .='WHERE invoice_ct_dt >= "'.date('Y-m-d',$dt).'" and invoice_ct_dt < "'.date('Y-m-d',$dt+86400).'"';
+    
+        $query = $this->db->query($sql);
+        return $query[0];
+    }
+
+    public function getKohReportVideo($dt = 0) {
+        $sql = "SELECT count(id) as video_cnt,COUNT(DISTINCT user_id) as video_user_cnt FROM `activity_koh_video` ";
+        $sql .='WHERE date_added >= "'.date('Y-m-d',$dt).'" and date_added < "'.date('Y-m-d',$dt+86400).'"';
+    
+        $query = $this->db->query($sql);
+        return $query[0];
+    }
+    
+
+
+    public function getKohReportTotalInvoice() {
+        $sql = "SELECT count(id) as invoice_cnt,COUNT(DISTINCT user_id) as invoice_user_cnt FROM `activity_koh_invoice` ";
+        //$sql .='WHERE invoice_ct_dt >= "'.date('Y-m-d',$dt).'" and invoice_ct_dt < "'.date('Y-m-d',$dt+86400).'"';
+    
+        $query = $this->db->query($sql);
+        return $query[0];
+    }
+    
+    public function getKohReportTotalVideo() {
+        $sql = "SELECT count(id) as video_cnt,COUNT(DISTINCT user_id) as video_user_cnt FROM `activity_koh_video` ";
+        //$sql .='WHERE date_added >= "'.date('Y-m-d',$dt).'" and date_added < "'.date('Y-m-d',$dt+86400).'"';
+    
+        $query = $this->db->query($sql);
+        return $query[0];
+    }
 }

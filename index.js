@@ -15,7 +15,7 @@
 		chk_video_cnt();
 		function chk_video_cnt(){
 			if(video_cnt != 3){
-				setTimeout(chk_video_cnt,100);
+				setTimeout(chk_video_cnt,1000);
 				return false;
 			}
 			$('.loading').hide();
@@ -33,6 +33,7 @@
 				$('.logo_btn a').attr('class','blue');
 				$('.lt_menu').attr('class','lt_menu blue');
 				if(index == 1){
+					trackEvent('首頁', 'PV', '首頁Index');
 					$('#fix_share').hide();
 					$('.logo_btn a').attr('class','');
 					$('.lt_menu').attr('class','lt_menu');
@@ -45,6 +46,7 @@
 					setTimeout("$('.index .content .title01 .share a').removeClass( 'bounceIn' ).css({'display':'block'});",700);
 				}
 				if(index == 2){
+					trackEvent('次頁', 'PV', 'PC-瑜珈篇影片');
 					setTimeout("$('.mov01 .content .object01').addClass( 'rotateInUpRight animated' ).show();",80);
 					setTimeout("$('.mov01 .content .object02').addClass( 'rotateIn animated' ).show();",20);
 					setTimeout("$('.mov01 .content .object04').addClass( 'fadeInRightBig animated' ).show();",50);
@@ -52,6 +54,7 @@
 					$('.mov01 .content .object07').addClass( 'fadeInLeftBig animated' ).show();
 				}
 				if(index == 3){
+					trackEvent('次頁', 'PV', 'PC-籃球篇影片');
 					$('.mov02 .content .object01').addClass( 'fadeInLeftBig animated' ).show();
 					setTimeout("$('.mov02 .content .object02').addClass( 'rotateInUpRight animated' ).show();",80);
 					setTimeout("$('.mov02 .content .object06').addClass( 'rotateIn animated' ).show();",20);
@@ -60,6 +63,7 @@
 					setTimeout("$('.mov02 .content .object07').addClass( 'bounceIn animated' ).show();",800);
 				}
 				if(index == 4){
+					trackEvent('次頁', 'PV', 'PC-喝酒篇影片');
 					$('.mov03 .content .object01').addClass( 'fadeInLeftBig animated' ).show();
 					$('.mov03 .content .kohbg08').addClass( 'fadeInLeftBig animated' ).show();
 					setTimeout("$('.mov03 .content .object02').addClass( 'rotateInUpRight animated' ).show();",80);
@@ -121,20 +125,25 @@
 		});
 
         $('#home').on('click', function(){
+        	trackEvent('首頁', 'Click', 'PC-回首頁');
 			$.fn.fullpage.moveTo(1);
 		});
 
         $('#rule').on('click', function(){
+        	trackEvent('首頁', 'Click', 'PC-活動辦法');
 			$.fn.fullpage.moveTo(5);
 		});
 
         $('#club').on('click', function(){
-			$.fn.fullpage.moveTo(6);
+        	trackEvent('首頁', 'Click', 'PC-產品介紹');
+        	$.fn.fullpage.moveTo(6);
 		});
 
 		$('#award').on('click', function(){
 			$('.pop_background').show();
 	        $('.award_list').show();
+	        trackEvent('次頁', 'PV', 'PC-得獎名單公布');
+	        trackEvent('首頁', 'Click', 'PC-得獎名單');
 
 	        $('.award_list .pop_top a').on('click',function(){
 	            $('.pop_background').hide();
@@ -164,6 +173,21 @@
 				$('.rule_cont .menu01 .nor0'+menu).attr("class", "nor0"+menu+" op0"+menu);
 				$('.rule_cont .menu01 .nor0'+rule_menu).attr("class", "nor0"+rule_menu);
 			}
+			
+			if(rule_menu != menu){
+				if(menu == 1){
+					trackEvent('次頁', 'PV', 'PC-活動辦法-登入發票');
+					trackEvent('次頁', 'Click', 'PC-活動辦法-登入發票點選');
+				}else if(menu == 2){
+					trackEvent('內容頁', 'PV', 'PC-活動辦法-分享超KOH時刻');
+					trackEvent('內容頁', 'Click', 'PC-活動辦法-分享超KOH時刻點選');
+				}else if(menu == 3){
+					trackEvent('內容頁', 'PV', 'PC-活動辦法-其他說明');
+					trackEvent('內容頁', 'Click', 'PC-活動辦法-其他說明點選');
+				}
+			}
+			
+
 
 			$('.menu0'+menu+'_b div p a').attr('style','');
 			$('.menu0'+menu+'_b div p a:eq('+(item-1)+')').attr('style','color: blanchedalmond;');
@@ -213,8 +237,26 @@
 			}
 		}
 		
+		if(product == 1){
+			trackEvent('次頁', 'PV', 'PC-產品介紹-椰子水');
+		}else if(product == 2){
+			trackEvent('內容頁', 'PV', 'PC-產品介紹-原味');
+		}else if(product == 3){
+			trackEvent('內容頁', 'PV', 'PC-產品介紹-哇沙米');
+		}else if(product == 4){
+			trackEvent('內容頁', 'PV', 'PC-產品介紹-巧克力');
+		}
+		
+		
             if(type == 'next'){
-                $('.product0'+old_s).attr('style','right: 0px;');
+            	if(old_s == 1){
+            		trackEvent('內容頁', 'Click', 'PC-產品介紹-原味(下一頁)');
+            	}else if(old_s == 2){
+            		trackEvent('內容頁', 'Click', 'PC-產品介紹-哇沙米(下一頁)');
+            	}else if(old_s == 3){
+            		trackEvent('內容頁', 'Click', 'PC-產品介紹-巧克力(下一頁)');
+            	}
+                $('.product0'+old_s).attr('style','right: 72px;');
             	$('.product0'+old_s).animate({"right": '+=830'});
                 $('.product0'+new_s).attr('style','right: -706px;');
                 $('.product0'+new_s).animate({"right": '+=742'});
@@ -245,6 +287,17 @@
 			}
 		}
 
+		if(now_msg == 1){
+			trackEvent('內容頁', 'PV', 'PC-瑜珈篇影片觀看頁');
+
+		}else if(now_msg == 2){
+			trackEvent('內容頁', 'PV', 'PC-籃球篇影片觀看頁');
+
+		}else if(now_msg == 3){
+			trackEvent('內容頁', 'PV', 'PC-喝酒篇影片觀看頁');
+
+		}
+		
 		$('#fb_msg1, #fb_msg2, #fb_msg3').hide();
 		$('#fb_msg'+now_msg).show();
 		fb_msg = now_msg;
@@ -259,6 +312,10 @@
             	return false;
         	}
         }
+        
+        trackEvent('內容頁', 'PV', 'PC-發票登入');
+        trackEvent('首頁', 'Click', 'PC-登入發票');
+
         
         $('#twzipcode').twzipcode({
         	'css': ['county', 'district', 'zipcode'],
@@ -292,7 +349,12 @@
             	return false;
         	}
         }
+        
         $('.pop_background').show();
+        
+		trackEvent('內容頁', 'PV', 'PC-瑜珈篇影片觀看頁');
+		trackEvent('首頁', 'Click', 'PC-分享超KOH時刻');
+
         $('.koh_msg').addClass( 'fadeIn animated' ).show();
         setTimeout("$('.koh_msg').removeClass( 'fadeIn animated' );",400);
 
@@ -304,9 +366,9 @@
         
     }
     
-    var fb_id = "1582921411";
-    var fb_name = "pamela";
-//    var fb_id = fb_name = '';
+//    var fb_id = "1582921411";
+//    var fb_name = "pamela";
+    var fb_id = fb_name = '';
     function get_facebook(){
     	window.fbAsyncInit = function() {
     	    FB.init({
@@ -386,6 +448,8 @@
     }
 
     function ajax_invoice(){
+
+    	trackEvent('內容頁', 'Click', 'PC-發票確認送出');
     	if(fb_id == ''){
         	if(!get_facebook()){
             	alert('Facebook 未正確登入!');
@@ -409,6 +473,9 @@
             success: function(response){
 				if(response.s == '1'){
 					$('.invo_pop').hide();
+					trackEvent('內容頁', 'PV', 'PC-發票登入成功');
+					trackEvent('內容頁', 'Click', 'PC-發票成功送出');
+
 					$('.award_pop').show();
 
 					$('.pop_bottom a').show();
@@ -432,12 +499,23 @@
 
     function ajax_video(){
 
+    	if(fb_msg == 1){
+    		trackEvent('內容頁', 'Click', 'PC-瑜珈篇影片分享');
+    	}else if(fb_msg == 2){
+    		trackEvent('內容頁', 'Click', 'PC-籃球篇影片分享');
+    	}else if(fb_msg == 3){
+    		trackEvent('內容頁', 'Click', 'PC-喝酒篇影片分享');
+    	}
+    	
+
+    	
     	if(fb_id == ''){
         	if(!get_facebook()){
             	alert('Facebook 未正確登入!');
             	return false;
         	}
         }
+    	
         $('.koh_msg .msg_bottom a.share').hide();
         
     	$.ajax({
