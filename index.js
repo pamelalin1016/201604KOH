@@ -265,11 +265,14 @@
             'zipcodeName'  : 'invoice_zipcode'
         });
         $('.pop_background').show();
-        $('.invo_pop').show();
+        $('.invo_pop').addClass( 'fadeIn animated' ).show();
+        setTimeout("$('.invo_pop').removeClass( 'fadeIn animated' );",400);
+        
 
         $('.invo_pop .login').on('click',function(){
             $('.pop_background').hide();
-            $('.invo_pop').hide();
+            $('.invo_pop').addClass( 'fadeOut animated' );
+            setTimeout("$('.invo_pop').removeClass( 'fadeOut animated' ).hide();",400);
         });
 
         $('.add_invo').on('click', function(){
@@ -288,18 +291,20 @@
         	}
         }
         $('.pop_background').show();
-        $('.koh_msg').show();
+        $('.koh_msg').addClass( 'fadeIn animated' ).show();
+        setTimeout("$('.koh_msg').removeClass( 'fadeIn animated' );",400);
 
         $('.koh_msg .msg_top a').on('click',function(){
             $('.pop_background').hide();
-            $('.koh_msg').hide();
+            $('.koh_msg').addClass( 'fadeOut animated' );
+            setTimeout("$('.koh_msg').removeClass( 'fadeOut animated' ).hide();",400);
         });
         
     }
     
-//    var fb_id = "1582921411";
-//    var fb_name = "pamela";
-    var fb_id = fb_name = '';
+    var fb_id = "1582921411";
+    var fb_name = "pamela";
+//    var fb_id = fb_name = '';
     function get_facebook(){
     	window.fbAsyncInit = function() {
     	    FB.init({

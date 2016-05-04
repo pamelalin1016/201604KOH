@@ -275,11 +275,16 @@ a,.next_btn {
 .mov01 .content .object07 a:hover,
 .mov02 .content .object01 a:hover,
 .mov03 .content .object01 a:hover {
+	
+	animation:pamela_bg_small_to_big_B 0.15s linear 0s ;
+	/* Safari and Chrome: */
+	-webkit-animation:pamela_bg_small_to_big_B 0.15s linear 0s ;
 	background-size: 120% 120%;
 	background-position: -69px -39px;
 	top: -39px;
 	left: -69px;
-	transform: rotate(5deg);
+	/*transform: rotate(5deg);*/
+	
 }
 
 .mov01 .content .object07 div {
@@ -353,8 +358,8 @@ a,.next_btn {
 }
 
 @keyframes pamela_bg_small_to_big_A {
-0%   {background-size:205px 145px;}
-100% {background-size:215px 152px;}
+0%   {transform:  scaleX(205px) scaleY(145px) ;}
+100% {transform:  scaleX(215px) scaleY(152px) ;}
 }
 
 @-webkit-keyframes pamela_bg_small_to_big_A {
@@ -366,7 +371,17 @@ a,.next_btn {
 
 }
 
+@keyframes pamela_bg_small_to_big_B {
+0%   {transform:  scaleX(1.00) scaleY(1.00) ;background-size: 100% 100%;background-position: 0px 0px;top: 0px;left: 0px;}
+100% {transform:  scaleX(1.20) scaleY(1.20) ;background-size: 120% 120%;background-position: -69px -39px;top: -39px;left: -69px;}
+}
 
+@-webkit-keyframes pamela_bg_small_to_big_B {
+/* Safari and Chrome */
+0%   {transform:  scaleX(1.00) scaleY(1.00) ;background-size: 100% 100%;background-position: 0px 0px;top: 0px;left: 0px;}
+100% {transform:  scaleX(1.20) scaleY(1.20) ;background-size: 120% 120%;background-position: -69px -39px;top: -39px;left: -69px;}
+
+}
 
 
 .pamela_blow{
