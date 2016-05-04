@@ -214,10 +214,12 @@
 		}
 		
             if(type == 'next'){
+                $('.product0'+old_s).attr('style','right: 0px;');
             	$('.product0'+old_s).animate({"right": '+=830'});
                 $('.product0'+new_s).attr('style','right: -706px;');
                 $('.product0'+new_s).animate({"right": '+=742'});
             }else{
+                $('.product0'+old_s).attr('style','right: 0px;');
                 $('.product0'+old_s).animate({"right": '-=830'});
                 $('.product0'+new_s).attr('style','right: 742px;');
                 $('.product0'+new_s).animate({"right": '-=706'});
