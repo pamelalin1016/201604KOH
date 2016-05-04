@@ -170,11 +170,11 @@ body {
     position: relative;
 }
 .index .content h2 {
-    width: 600px;
-    height: 344px;
-    background: url("images/index_04.png") 0 0 no-repeat;
+    width: 674px;
+    height: 388px;
+    background: url("images/index_04.gif") center center no-repeat;
     top: 50px;
-    left: 60px;
+    left: 20px;
     position: absolute;
     text-indent: 100%;
     overflow: hidden;
@@ -297,14 +297,14 @@ body {
     height: 280px;
     background: url("images/mov01_cnt02.png") 0 0 no-repeat;
     position: absolute;
-    top: 170px;
-    right: -115px;
+    bottom: -180px;
+    left: 250px;
     z-index: 86;
 }
 .mov01 .content .object06 {
-    width: 493px;
+    width: 515px;
     height: 412px;
-    background: url("images/mov01_cnt03.png") 0 0 no-repeat;
+    background: url("images/mov01_cnt03.gif") 0 0 no-repeat;
     position: absolute;
     bottom: -175px;
     right: 25px;
@@ -320,23 +320,24 @@ body {
 .mov01 .content .mov01_pic img {
     width: 100%;
 }
-.mov01 .kohbg01 {
+.mov01 .content .kohbg01 {
     width: 134px;
     height: 182px;
     background: url("images/kohbg01.png") 0 0 no-repeat;
     position: absolute;
-    top: -80px;
-    right: 30%;
+    bottom: -200px;
+    left: 150px;
 }
-.mov01 .kohbg02 {
+.mov01 .content .kohbg02 {
     width: 173px;
     height: 127px;
     background: url("images/kohbg02.png") 0 0 no-repeat;
     position: absolute;
-    top: 30%;
-    left: -80px;
+    top: 50px;
+    right: 250px;
 }
-.mov01 .kohbg03 {
+.mov01 .content .kohbg03 {
+    display: none;
     width: 231px;
     height: 205px;
     background: url("images/kohbg03.png") 0 0 no-repeat;
@@ -393,9 +394,9 @@ body {
     z-index: 87;
 }
 .mov02 .content .object05 {
-    width: 235px;
+    width: 242px;
     height: 494px;
-    background: url("images/mov02_cnt01.png") 0 0 no-repeat;
+    background: url("images/mov02_cnt01.gif") 0 0 no-repeat;
     position: absolute;
     top: 325px;
     right: -10px;
@@ -428,10 +429,11 @@ body {
     left: 155px;
 }
 .mov02 .content .kohbg05 {
+    display: none;
     width: 207px;
     height: 110px;
     background: url("images/kohbg05.png") 0 0 no-repeat;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     right: 33%;
 }
@@ -510,9 +512,9 @@ body {
     z-index: 88;
 }
 .mov03 .content .object07 {
-    width: 242px;
+    width: 251px;
     height: 559px;
-    background: url("images/mov03_cnt03.png") 0 0 no-repeat;
+    background: url("images/mov03_cnt03.gif") 0 0 no-repeat;
     position: absolute;
     top: 320px;
     left: 265px;
@@ -535,10 +537,11 @@ body {
     right: 75px;
 }
 .mov03 .content .kohbg09 {
+    display: none;
     width: 207px;
     height: 90px;
     background: url("images/kohbg09.png") 0 0 no-repeat;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 360px;
 }
@@ -555,7 +558,7 @@ body {
     margin: 0 auto;
 }
 .rule_page .content .title {
-    width: 600px;
+    width: 602px;
     height: 262px;
     margin: 0 auto;
     position: relative;
@@ -586,7 +589,7 @@ body {
     background: url("images/rule_title04.png") 0 0 no-repeat;
 }
 .rule_page .content .rule_cont {
-    width: 600px;
+    width: 602px;
     margin: 0 auto;
 }
 .rule_page .content .rule_cont .menu01 {
@@ -627,8 +630,8 @@ body {
     background: url("images/rule_menu02.png") -256px 0 no-repeat;
 }
 .rule_page .content .rule_cont .menu01 .top .op03 {
-    width: 96px;
-    background: url("images/rule_menu03.png") -505px 0 no-repeat;
+    width: 98px;
+    background: url("images/rule_menu03.png") -503px 0 no-repeat;
 }
 /*op01、op02、op03為項目onfoucs狀態_end*/
 
