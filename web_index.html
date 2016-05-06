@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>KOH</title>
+<title>KOH有ㄒㄧㄠˋ俱樂部</title>
 <meta name="author" content="">
 <meta name="copyright" content="">
 <meta name="keywords" content="koh coconut 有ㄒㄧㄠˋ俱樂部">
@@ -14,10 +14,11 @@
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
 <script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="ga.js"></script>
 <link href="reset.css" rel="stylesheet" type="text/css">
-<link href="koh.css" rel="stylesheet" type="text/css">
+<link href="koh_V2.css" rel="stylesheet" type="text/css">
 <link href="pop.css" rel="stylesheet" type="text/css">
-<link href="rd.css" rel="stylesheet" type="text/css">
+<link href="rd_V2.css" rel="stylesheet" type="text/css">
 <link href="animate.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -33,10 +34,10 @@
 <!--固定式按鈕-->
 <div class="fix_btn" style="display:none;">
     <h1 class="logo_btn">
-        <a href="http://kohcoconut.com/zh-hant/" title="KOH COCONUT" class="blue" target="_blank">KOH COCONUT</a>
+        <a href="http://kohcoconut.com/zh-hant/" title="KOH COCONUT" class="blue" target="_blank" onclick="trackEvent('首頁', 'Click', 'PC-官網連結');">KOH COCONUT</a>
     </h1>
     <div class="fb_btn">
-        <a href="https://www.facebook.com/KohCoconut/" title="facebook" target="_blank">facebook</a>
+        <a href="https://www.facebook.com/KohCoconut/" title="facebook" target="_blank" onclick="trackEvent('首頁', 'Click', 'PC-紛絲專業連結');">facebook</a>
     </div>
     <div class="invoice" >
         <a title="登錄發票，泰國雙人遊等你來拿" class="invo_b sbtn" onclick="get_invoice();">
@@ -317,14 +318,24 @@
 		<div class="index">
 		    <div class="content">
 		        <div class="title01">
-    		        <h2>有ㄒㄧㄠˋ俱樂部</h2>
-    		        <div class="title02"></div>
-    		        <div class="title03"></div>
-    		        <div class="title04"></div>
-    		        <div class="title05">想與部長”KOH寶”一樣活力充沛嗎?<br>
-    		來有ㄒㄧㄠ\聚樂部就對了!</div>
+                    <img src="images/index_02.png" style="width: 100%;">
+    		        <h2>
+                        <img src="images/index_04.gif">
+                    </h2>
+    		        <div class="title02">
+                        <img src="images/index_03.png">
+                    </div>
+    		        <div class="title03">
+                        <img src="images/index_05.png">
+                    </div>
+    		        <div class="title04">
+                        <img src="images/index_01.png">
+                    </div>
+    		        <div class="title05">想與部長”KOH寶”一樣活力充沛嗎?<br>來有
+                        <b class="svgword"><img src="images/word.svg"></b>聚樂部就對了!
+                    </div>
     		        <div class="share">
-    		            <a title="分享超KOH時刻，就有機會獲得泰國雙人假期" >分享超KOH時刻，就有機會獲得泰國雙人假期</a>
+    		            <a title="分享超KOH時刻，就有機會獲得泰國雙人假期" ><img src="images/share_btn.png"></a>
     		        </div>
 		        </div>     
 		<!--
@@ -334,7 +345,6 @@
 		-->
 		        <div class="clearboth"></div>
 		    </div>
-		    <div class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</div>
 <!-- 		    <div class="video_top"></div> -->
 		    <div class="video_box">
     		    <div class="video_box1">
@@ -353,6 +363,7 @@
         		    </video>
     		    </div>
 		    </div>
+		    <div class="next_btn" id="moveDown">KOH時刻，立即見<b class="svgword"><img src="images/word.svg"></b></div>
 		</div>
 		<!--index_end-->
 	</div>
@@ -360,16 +371,16 @@
 		<!--mov01-->
 		<div class="mov01">
 		    <div class="content">
-		        <div class="object01"></div>
-		        <div class="object02"></div>
-		        <div class="object03"></div>
-		        <div class="object04"></div>
-		        <div class="object05"></div>
-		        <div class="object06"></div>
+		        <div class="object01"><img src="images/mov01_title01.png"></div>
+		        <div class="object02"><img src="images/mov01_title02.png"></div>
+		        <div class="object03"><img src="images/mov01_title03.png"></div>
+		        <div class="object04"><img src="images/mov01_cnt01.png"></div>
+		        <div class="object05"><img src="images/mov01_cnt02.png"></div>
+		        <div class="object06"><img src="images/mov01_cnt03.gif"></div>
 		        <div class="object07">
-		        	<div>
-		            	<a title="影片分享" onclick="get_share();"></a>
-		            </div>
+<!--		        	<div>-->
+		            	<a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-瑜珈篇影片觀看');get_share();"><img src="images/mov01.jpg"></a>
+<!--		            </div>-->
 		        </div>
                 <div class="kohbg01"></div>
                 <div class="kohbg02"></div>
@@ -384,19 +395,19 @@
 		<div class="mov02">
 		    <div class="content">
 		        <div class="object01">
-		        	<div>
-		            	<a title="影片分享" onclick="get_share();"></a>
-		            </div>
+<!--		        	<div>-->
+		          <a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-籃球篇影片觀看');get_share();"><img src="images/mov02.jpg"></a>
+<!--		            </div>-->
 		        </div>
-		        <div class="object02"></div>
-		        <div class="object03"></div>
-		        <div class="object04"></div>
-		        <div class="object05"></div>
-		        <div class="object06"></div>
-		        <div class="object07"></div>
-		        <div class="kohbg04"></div>
-		        <div class="kohbg05"></div>
-		        <div class="kohbg06"></div>
+		        <div class="object02"><img src="images/mov02_title01.png"></div>
+		        <div class="object03"><img src="images/mov02_cnt03.png"></div>
+		        <div class="object04"><img src="images/mov02_cnt02.png"></div>
+		        <div class="object05"><img src="images/mov02_cnt01.gif"></div>
+		        <div class="object06"><img src="images/mov02_title02.png"></div>
+		        <div class="object07"><img src="images/mov02_title03.png"></div>
+		        <div class="kohbg04"><img src="images/kohbg04.png"></div>
+		        <div class="kohbg05"><img src="images/kohbg05.png"></div>
+		        <div class="kohbg06"><img src="images/kohbg06.png"></div>
 		    </div>
 		</div>
 		<!--mov02_end-->
@@ -407,19 +418,19 @@
 		<div class="mov03">
 		    <div class="content">
 		        <div class="object01">
-		        	<div>
-		            	<a title="影片分享" onclick="get_share();"></a>
-		            </div>
+<!--		        	<div>-->
+		          <a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-喝酒篇影片觀看');get_share();"><img src="images/mov03.jpg"></a>
+<!--		            </div>-->
 		        </div>
-		        <div class="object02"></div>
-		        <div class="object03"></div>
-		        <div class="object04"></div>
-		        <div class="object05"></div>
-		        <div class="object06"></div>
-		        <div class="object07"></div>
-		        <div class="kohbg07"></div>
-		        <div class="kohbg08"></div>
-		        <div class="kohbg09"></div>
+		        <div class="object02"><img src="images/mov03_title01.png"></div>
+		        <div class="object03"><img src="images/mov03_title02.png"></div>
+		        <div class="object04"><img src="images/mov02_title03.png"></div>
+		        <div class="object05"><img src="images/mov03_title03.png"></div>
+		        <div class="object06"><img src="images/mov03_cnt02.png"></div>
+		        <div class="object07"><img src="images/mov03_cnt03.gif"></div>
+		        <div class="kohbg07"><img src="images/kohbg07.png"></div>
+		        <div class="kohbg08"><img src="images/kohbg08.png"></div>
+		        <div class="kohbg09"><img src="images/kohbg09.png"></div>
 		        <div class="clearboth"></div>
 		    </div>
 		</div>
@@ -431,9 +442,9 @@
 		<div class="rule_page">
 		    <div class="content">
 		        <div class="title">
-		            <div class="object01"></div>
-		            <h3 class="object02"></h3>
-		            <div class="object03"></div>
+		            <div class="object01"><img src="images/rule_title02.png"></div>
+		            <h3 class="object02"><img src="images/rule_title03.png"></h3>
+		            <div class="object03"><img src="images/rule_title04.png"></div>
 		        </div>
 		        <div class="rule_cont">
 		            <div class="menu01">
@@ -503,15 +514,16 @@
 		        	<div class="product">
 			            <ul>
 			                <li class="product01">
-                		        <div class="tip" style="top: 75px;right: 0px;">
+                		        <div class="tip" >
                 		            <div class="tip_koh">
                 		                部長 - KOH寶：有用不完的活力，總是充滿體力最喜歡將歡ㄒㄧㄠ\散佈給大家
                 		            </div>
-                		        </div> <span>KOH COCONUT酷椰子純椰子汁</span>
+                		        </div>
+                                <img src="images/club_put01.png" width="95%">
 		        			</li>
-			                <li class="product02" style="display:none;"><span>香椰脆片-原味</span></li>
-			                <li class="product03" style="display:none;"><span>香椰脆片-哇沙米</span></li>
-			                <li class="product04" style="display:none;"><span>香椰脆片-巧克力</span></li>
+			                <li class="product02" style="display:none;"><img src="images/club_put02.png" width="95%"></li>
+			                <li class="product03" style="display:none;"><img src="images/club_put03.png" width="95%"></li>
+			                <li class="product04" style="display:none;"><img src="images/club_put04.png" width="95%"></li>
 			            </ul>
 		            </div>
 		            <div class="lr_btn">

@@ -19,3 +19,5 @@ local.properties
 # settings
 .env.dev_config.php
 .env.online_config.php
+.cfg.dev_config.php
+.cfg.online_config.php
