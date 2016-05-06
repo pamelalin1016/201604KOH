@@ -721,6 +721,7 @@ body {
     width: 540px;
     height: 415px;
     padding: 10px 30px 0;
+    margin-top: -10px;
     background: url("images/rule_menu01.png") 0 bottom no-repeat;
 }
 /*第一則*/
@@ -728,28 +729,28 @@ body {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m01_p1.png") 0 0 no-repeat;
+    background: url("images/rule_m01_p1.png") 0 15px no-repeat;
 }
 /*第二則*/
 .rule_page .content .rule_cont .menu01_b .p2 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m01_p2.png") 0 0 no-repeat;
+    background: url("images/rule_m01_p2.png") 0 15px no-repeat;
 }
 /*第三則*/
 .rule_page .content .rule_cont .menu01_b .p3 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m01_p3.png") 0 0 no-repeat;
+    background: url("images/rule_m01_p3.png") 0 30px no-repeat;
 }
 /*第四則*/
 .rule_page .content .rule_cont .menu01_b .p4 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m01_p4.png") 0 0 no-repeat;
+    background: url("images/rule_m01_p4.png") 0 10px no-repeat;
 }
 /*下方圓點選單*/
 .rule_page .content .rule_cont .menu01_b p, 
@@ -770,21 +771,22 @@ body {
     width: 541px;
     height: 415px;
     padding: 10px 30px 0;
-    background: url("images/rule_menu02.png") 0 bottom no-repeat;
+    margin-top: -10px;
+    background: url("images/rule_menu02.png") -1px bottom no-repeat;
 }
 /*第一則*/
 .rule_page .content .rule_cont .menu02_b .p1 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m02_p1.png") 0 0 no-repeat;
+    background: url("images/rule_m02_p1.png") 0 30px no-repeat;
 }
 /*第二則*/
 .rule_page .content .rule_cont .menu02_b .p2 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m02_p2.png") 0 0 no-repeat;
+    background: url("images/rule_m02_p2.png") 0 30px no-repeat;
 }
 /*第三則*/
 .rule_page .content .rule_cont .menu02_b .p3 {
@@ -805,6 +807,7 @@ body {
     width: 541px;
     height: 415px;
     padding: 10px 30px 0;
+    margin-top: -10px;
     background: url("images/rule_menu03.png") 0 bottom no-repeat;
 }
 /*第一則*/
@@ -812,28 +815,28 @@ body {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m03_p1.png") 0 0 no-repeat;
+    background: url("images/rule_m03_p1.png") 0 35px no-repeat;
 }
 /*第二則*/
 .rule_page .content .rule_cont .menu03_b .p2 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m03_p2.png") 0 0 no-repeat;
+    background: url("images/rule_m03_p2.png") 0 25px no-repeat;
 }
 /*第三則*/
 .rule_page .content .rule_cont .menu03_b .p3 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m03_p3.png") 0 0 no-repeat;
+    background: url("images/rule_m03_p3.png") 0 50px no-repeat;
 }
 /*第四則*/
 .rule_page .content .rule_cont .menu03_b .p4 {
     width: 520px;
     height: 390px;
     margin: 0 auto;
-    background: url("images/rule_m03_p4.png") 0 0 no-repeat;
+    background: url("images/rule_m03_p4.png") 0 50px no-repeat;
 }
 /*活動辦法_end*/
 
