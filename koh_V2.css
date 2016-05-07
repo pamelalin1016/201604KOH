@@ -986,3 +986,11 @@ body {
     clear: both;
 }
 
+
+@media screen and (max-width: 1420px) {
+    .shrink {
+        transform: scale(0.85);
+    }
+}
+
+

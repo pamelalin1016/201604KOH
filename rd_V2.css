@@ -315,6 +315,37 @@ a,.next_btn {
 	float: left;
 }
 
+
+.invo_pop {
+    width: 100%;
+    left: auto;
+}
+
+.invo_pop #invoice_form {
+    width: 680px;
+    margin: 0px auto;
+}
+
+.koh_msg {
+    width: 100%;
+    left: auto;
+}
+
+.koh_msg .msg_min {
+    width: 500px;
+}
+
+.koh_msg .koh_msg_center{
+    width: 600px;
+    margin: 0px auto;
+}
+
+.koh_msg .msg_min .arrow{
+	position: relative;
+    left: -32px;
+}
+
+
 /*.fix_btn .invoice .invo_b:hover img{
 	width: 105%;
 }*/
@@ -522,4 +553,30 @@ a,.next_btn {
     -ms-transform:  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
   }
 }
+
+/*--------------------------------------*/
+@media screen and (max-height: 768px) {
+	.koh_msg{
+		top:0px;
+	}
+	
+	.koh_msg .msg_bottom {
+		z-index: 600;
+	    top: -95px;
+	    position: relative;
+	}
+	
+	.fix_btn .s_btn {
+	    right: 90px;
+	}
+	
+	.fix_btn .lt_menu {
+	    top: 150px;
+	}
+}
+
+
+
+
+
 

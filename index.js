@@ -32,11 +32,13 @@
 				$('.index').show();
 				$('.logo_btn a').attr('class','blue');
 				$('.lt_menu').attr('class','lt_menu blue');
+				$('.index .next_btn').hide();
 				if(index == 1){
 					trackEvent('首頁', 'PV', '首頁Index');
 					$('#fix_share').hide();
 					$('.logo_btn a').attr('class','');
 					$('.lt_menu').attr('class','lt_menu');
+					$('.index .next_btn').show();
 					setTimeout("$('.index .content .title01 h2').addClass( 'zoomIn animated' ).show();",400);
 					setTimeout("$('.index .content .title02').addClass( 'rollIn animated' ).show();",500);
 					setTimeout("$('.index .content .title03').addClass( 'bounceIn animated' ).show();",800);
@@ -305,6 +307,7 @@
 
 	var invo_item = 1;
     function get_invoice(){
+
         if(fb_id == ''){
         	if(!get_facebook()){
         		now_event = 'get_invoice';
@@ -312,7 +315,7 @@
             	return false;
         	}
         }
-        
+
         trackEvent('內容頁', 'PV', 'PC-發票登入');
         trackEvent('首頁', 'Click', 'PC-登入發票');
 
@@ -370,11 +373,12 @@
 //    var fb_name = "pamela";
     var fb_id = fb_name = '';
     function get_facebook(){
+
     	window.fbAsyncInit = function() {
     	    FB.init({
-    	      appId      : '543797882389004',
+    	      appId      : '1011014942321040',
     	      xfbml      : true,
-    	      version    : 'v2.5'
+    	      version    : 'v2.6'
     	    });
     	    
     	    FB.getLoginStatus(function(response) {
@@ -441,8 +445,8 @@
 				}
 			},
             error:function(xhr, ajaxOptions, thrownError){ 
-                alert(xhr.status); 
-                alert(thrownError); 
+//                alert('3'+xhr.status); 
+//                alert(thrownError); 
             }
         });
     }
@@ -489,7 +493,7 @@
 				}
             },
             error:function(xhr, ajaxOptions, thrownError){ 
-                alert(xhr.status); 
+                alert('1'+xhr.status); 
                 alert(thrownError); 
                 $('.pop_bottom a').show();
             }
@@ -543,7 +547,7 @@
 				$('.koh_msg .msg_bottom a.share').show();
             },
             error:function(xhr, ajaxOptions, thrownError){ 
-                alert(xhr.status); 
+                alert('2'+xhr.status); 
                 alert(thrownError); 
                 $('.koh_msg .msg_bottom a.share').show();
             }

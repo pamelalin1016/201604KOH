@@ -279,15 +279,16 @@
     
 <!--超KOH時刻留言分享-->
 <div class="koh_msg" style="display:none;">
+	<div class="koh_msg_center">
     <div class="msg_top">
         <h3>超KOH時刻留言分享</h3>
         <a title="關閉"></a>
     </div>
     <div class="msg_min">
         <div class="fb_msg">
-        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F802976773165920&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F808866192576978&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&width=500&show_text=true&appId=543797882389004&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F802976773165920&width=500&show_text=true&appId=543797882389004&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F808866192576978&width=500&show_text=true&appId=543797882389004&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </div>
         <div class="arrow">
             <a title="" class="left" onclick="changeFbMsg('left');">left</a>
@@ -297,8 +298,9 @@
     </div>
     <div class="msg_bottom">
         <!-- <a title="" class="like">讚</a> -->
-        <a title="" class="share" onclick="ajax_video();window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');">分享</a>
+        <a title="" class="share" onclick="ajax_video();window.open('https://www.facebook.com/sharer/sharer.php?app_id=543797882389004&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');">分享</a>
         
+    </div>
     </div>
 </div>
 <!--超KOH時刻留言分享_end-->
@@ -336,7 +338,7 @@
     		        <div class="title04">
                         <img src="images/index_01.png">
                     </div>
-    		        <div class="title05">想與部長”KOH寶”一樣活力充沛嗎?<br>來有
+    		        <div class="title05">想與部長"KOH寶"一樣活力充沛嗎?<br>來有
                         <b class="svgword"><img src="images/word.svg"></b>聚樂部就對了!
                     </div>
     		        <div class="share">
@@ -446,6 +448,7 @@
 		<!--活動辦法-->
 		<div class="rule_page">
 		    <div class="content">
+                <div class="shrink">
 		        <div class="title">
 		            <div class="object01"><img src="images/rule_title02.png"></div>
 		            <h3 class="object02"><img src="images/rule_title03.png"></h3>
@@ -499,6 +502,7 @@
 		                </div>
 		            </div>
 		        </div>
+                </div>
 		    </div>    
 		</div>
 		<!--活動辦法_end-->
@@ -507,6 +511,7 @@
 		<!--俱樂部成員-->
 		<div class="club_member">
 		    <div class="content">
+                <div class="shrink">
 		        <div class="title">
 		            <h3>俱樂部成員</h3>
 		        </div>
@@ -537,10 +542,10 @@
 		                <div class="clearboth"></div>
 		            </div>
 		        </div>
-		    </div>
-
+		      </div>
+            </div>
 		</div>    
-		<div class="club_member">
+		<div class="club_member" style="overflow: initial;">
 		    <div class="footer">
 		        <div class="content">
 		            <a href="" title="WORLD GYM" class="world">WORLD GYM</a>

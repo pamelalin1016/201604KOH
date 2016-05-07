@@ -1,5 +1,5 @@
 <?php 
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 define('SET_SETTING_FILE', './');
 
 // Configuration
@@ -18,13 +18,16 @@ $mod = ft($_GET['mod']);
 if($mod == 'fb'){
     $data['fb_id'] = ft($_POST['fb_id']);
     $data['fb_name'] = ft($_POST['name']);
+
+//     $data['fb_id'] = ft($_GET['fb_id']);
+//     $data['fb_name'] = ft($_GET['name']);
     $uid = $model_activity_koh->chkKohUser($data);
     if($uid){
         echo json_encode(array('s'=>1,'msg'=>$uid));
     }else{
         $uid = $model_activity_koh->addKohUser($data);
         if($uid){
-            echo json_encode(array('s'=>1,'msg'=>$uid));
+            echo json_encode(array('s'=>1,'msg'=>(string) $uid));
         }else{
             echo json_encode(array('s'=>-1,'msg'=>'寫入失敗'));
         }
