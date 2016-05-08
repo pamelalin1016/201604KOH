@@ -9,7 +9,6 @@
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/comm.js"></script>
 
 <script src="js/twzipcode-1.4.1-min.js"></script>
 </head>
@@ -28,6 +27,7 @@
                     <ul class="nav">
                     	<li><a href="koh_user.php">會員列表</a></li>
                     	<li><a href="koh_report.php">活動總覽</a></li>
+                    	<li><a href="koh_video.php">影片分享</a></li>
                     </ul>
                 </div>
                 

@@ -133,4 +133,37 @@ class ModelActivityKoh{
         $query = $this->db->query($sql);
         return $query[0];
     }
+    
+
+
+    #
+    public function getKohVideoList($data = array()) {
+        $sql = "SELECT a.id,a.date_added,u.fb_id,u.fb_name,u.share_cnt FROM `activity_koh_video` as a RIGHT JOIN `activity_koh_user` as u ON a.user_id = u.id  ";
+    
+        $sql .='WHERE video = "'.$data['type'].'"';
+    
+        $sql .= " ORDER BY date_added DESC";
+    
+        if (isset($data['start']) || isset($data['limit'])) {
+            if ($data['start'] < 0) {
+                $data['start'] = 0;
+            }
+    
+            if ($data['limit'] < 1) {
+                $data['limit'] = 20;
+            }
+    
+            $sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+        }
+    
+        $query = $this->db->query($sql);
+        return $query;
+    }
+    
+    public function getKohVideoListCoupons($data = array()){
+        $sql = "SELECT COUNT(*) AS total FROM `activity_koh_video` as a RIGHT JOIN `activity_koh_user` as u ON a.user_id = u.id ";
+        $sql .='WHERE video = "'.$data['type'].'"';
+        $query = $this->db->query($sql);
+        return $query['0']['total'];
+    }
 }

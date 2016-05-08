@@ -1,4 +1,47 @@
 <?php 
+ini_set('display_errors', '0');
+
+if($_GET['fb_login']){
+    define('SET_SETTING_FILE', './');
+    
+    // Configuration
+    if (require("config.php")) {
+        require("config.php");
+    }
+    
+    require_once(DIR_TO.'library/facebook/facebook.php');
+    
+    $long_id = 0;
+    $fb = new Facebook(
+        array(
+            'appId'  	=> '1011014942321040',//$appId,
+            'secret' 	=> 'e13f01f5b24f71abf22e48407ca4d650',//$secret,
+        )
+        );
+    
+    # Get User ID
+    $user = $fb->getUser();
+    $long_id = $user;
+    
+    if(empty($user) || !preg_match('/^[1-9][0-9]*$/', $user) || $_GET['login'] != '1'){
+        $_SERVER['REQUEST_URI'] = $_SERVER['REQUEST_URI'].( strpos($_SERVER['REQUEST_URI'],'?')?'&':'?' ).'login=1';
+        $fb->destroySession();
+        $loginUrl = $fb->getLoginUrl(array('scope' => 'email')) . '&display=popup';
+        header('Location: '.$loginUrl);
+        exit;
+    }
+    
+    
+    
+    
+    $result = $fb->api("/me","GET");
+    $fb_gender=$result['gender'];//抓出性別
+    $fb_name=$result['name'];//抓出名字
+    $email = $result['email'];
+    
+    $result = $fb->api("/me/ids_for_business","GET");
+}
+
 require_once 'm_header.php';
 ?>
 
@@ -69,7 +112,7 @@ $(document).ready(function() {
 });
 
 
-
+var now_event = '';
 var fb_msg = 1;
 function changeFbMsg(type){
 	var now_msg = 1;
@@ -105,9 +148,15 @@ var invo_item = 1;
 function get_invoice(){
 	trackEvent('首頁', 'Click', 'MB-登入發票');
 	
-    if(fb_id == ''){
-    	get_facebook();
+    
+	if(fb_id == ''){
+    	if(!get_facebook()){
+    		now_event = 'get_invoice';
+        	//alert('Facebook 未正確登入!');
+        	return false;
+    	}
     }
+    
     trackEvent('內容頁', 'PV', 'MB-發票登入');
     
     $('.invo').show();
@@ -137,7 +186,10 @@ function get_invoice(){
 
 function get_share(){
     if(fb_id == ''){
-    	get_facebook();
+    	if(!get_facebook()){
+        	now_event = 'get_share';
+        	return false;
+    	}
     }
 
     $('.koh_msg').show();
@@ -152,11 +204,12 @@ function get_share(){
 // var fb_name = "pamela";
 var fb_id = fb_name = '';
 function get_facebook(){
+
 	window.fbAsyncInit = function() {
 	    FB.init({
 	      appId      : '1011014942321040',
 	      xfbml      : true,
-	      version    : 'v2.5'
+	      version    : 'v2.6'
 	    });
 	    
 	    FB.getLoginStatus(function(response) {
@@ -167,16 +220,21 @@ function get_facebook(){
 			    });
 	    	  }
 	    	  else {
-				FB.login(function(response) {
+	    		window.location.href='index.php?fb_login=1';
+				/*FB.login(function(response) {
+				    alert(4);
 			      if (response.authResponse) {
+					    alert(5);
 			       FB.api('/me', function(response) {
+					    alert(6);
 			           ajax_facebook(response.id, response.name);
 				       return true;
 			       });
 			      }else{
-				      return false;
+						console.log('登入gg!');
+				        return false;
 			      }
-				}, {scope: 'public_profile,email'});
+				});*/
 	    	  }
 	    	});
 	    	
@@ -204,6 +262,14 @@ function ajax_facebook(id, name){
 		success: function(response){
 			if(response.s == '1'){
 				console.log('登入成功!');
+				
+				if(now_event == 'get_invoice'){
+					get_invoice();
+				}
+				
+				if(now_event == 'get_share'){
+					get_share();
+				}
 			}else{
 				alert('登入失敗請重新再登入一次!');
 				window.location.reload();
@@ -315,7 +381,23 @@ function ajax_video(){
         }
     });
 
-	window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+	//window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+	
+
+	if(fb_msg == 1){
+		trackEvent('內容頁', 'Click', 'MB-瑜珈篇-影片分享');
+		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+	}
+	
+	if(fb_msg == 2){
+		trackEvent('內容頁', 'Click', 'MB-籃球篇-影片分享');
+		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+    }
+	
+	if(fb_msg == 3){
+		trackEvent('內容頁', 'Click', 'MB-喝酒篇-影片分享');
+		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+    }
 	$('.koh_msg').hide();
 }
 
@@ -562,13 +644,13 @@ function close_award_pop(){
         </h3>
     </div>
     <div class="msg_min">
-        <iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F811866428943621&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        <iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F802976773165920&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        <iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FKohCoconut%2Fposts%2F808866192576978&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
     </div>
     <div class="msg_bottom">
         <div class="fb">
-            <a title="" class="share" onclick="ajax_video();">分享</a>
+            <a title="" class="share" onclick="ajax_video();share_mag();">分享</a>
 <!--             <a href="" title="" class="like">讚</a> -->
             <div class="clearboth"></div>
         </div>

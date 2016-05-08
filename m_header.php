@@ -29,7 +29,7 @@
 <!--loading頁-->
 <div class="loading" style="z-index:99999;">
     <div class="kohman">
-        <img src="m_images/loading_koh.png">
+        <img src="m_images/loading_koh.gif">
     </div>    
 </div>
 
