@@ -28,7 +28,8 @@
                 </a>
             </li>
             <li>
-                <a href="award_list.php" title="得獎名單" class="awar" onclick="trackEvent('首頁', 'Click', 'MB-得獎名單');"> 得獎名單
+            	<!-- href="award_list.php" -->
+                <a  title="得獎名單" class="awar" onclick="trackEvent('首頁', 'Click', 'MB-得獎名單');"> 得獎名單
                     <img src="m_images/m_menu03.png">
                 </a>
             </li>

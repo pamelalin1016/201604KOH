@@ -18,6 +18,7 @@
 <?php }?>
 <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script type="text/javascript" src="ga.js"></script>
 <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="m_koh.css" rel="stylesheet" type="text/css">

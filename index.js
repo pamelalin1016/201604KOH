@@ -22,11 +22,62 @@
 		}
 		
 		var small_man_rotate = 0;
+		var now_page_name = '';
 		$('#fullpage').fullpage({
 			// anchors: ['firstPage', 'secondPage', '3rdPage'],
 			// sectionsColor: ['#71cff4', '#fcc153', '#79c3d1', '#f2786f'],
+			anchors: ['firstPage', 'secondPage', '3rdPage', '4rdPage', '5rdPage-1', '6rdPage-1'],
 			scrollBar: false,
 			afterLoad: function(anchorLink, index){
+				if(anchorLink == '5rdPage-1' || (window.location.hash == '#5rdPage-1' && index != 5)){
+					if(rule_menu != anchorLink.substring(anchorLink.length-1,anchorLink.length)){
+						window.location.hash='#5rdPage-'+rule_menu;
+					}
+					
+					if(anchorLink != '5rdPage-1'){
+						setTimeout('$.fn.fullpage.moveTo(5);',250);
+						setTimeout('changeRule(1,1);',450);
+					}
+				}
+				
+				if(window.location.hash == '#5rdPage-2' && index != 5){
+					setTimeout('$.fn.fullpage.moveTo(5);',250);
+					setTimeout('changeRule(2,1);',450);
+				}
+				
+				if(window.location.hash == '#5rdPage-3' && index != 5){
+					setTimeout('$.fn.fullpage.moveTo(5);',250);
+					setTimeout('changeRule(3,1);',450);
+				}
+				
+
+				if(anchorLink == '6rdPage-1' || (window.location.hash == '#6rdPage-1' && index != 6)){
+					if(product != anchorLink.substring(anchorLink.length-1,anchorLink.length)){
+						window.location.hash='#6rdPage-'+product;
+					}
+					
+					if(anchorLink != '6rdPage-1'){
+						setTimeout('$.fn.fullpage.moveTo(6);',250);
+						setTimeout('changeProduct(1,true);',450);
+					}
+				}
+				
+				if(window.location.hash == '#6rdPage-2' && index != 6){
+					setTimeout('$.fn.fullpage.moveTo(6);',250);
+					setTimeout('changeProduct(2,true);',450);
+				}
+				
+				if(window.location.hash == '#6rdPage-3' && index != 6){
+					setTimeout('$.fn.fullpage.moveTo(6);',250);
+					setTimeout('changeProduct(3,true);',450);
+				}
+				
+				if(window.location.hash == '#6rdPage-4' && index != 6){
+					setTimeout('$.fn.fullpage.moveTo(6);',250);
+					setTimeout('changeProduct(4,true);',450);
+				}
+				
+				
 				
 				$('.fix_btn').show();
 				$('.index').show();
@@ -86,6 +137,8 @@
 					$('.club_member .content .title h3').addClass( 'pamela_blow animated' ).show();
 					setTimeout("$('.club_member .content .arrow_btn').addClass( 'fadeInRightBig animated' ).show();",400);
 				}
+				
+				setTimeout('now_page_name = window.location.hash;',600);
 			},
 			onLeave: function(index,nextIndex,direction){
 				if(nextIndex == 1 || nextIndex == 5){
@@ -142,6 +195,7 @@
 		});
 
 		$('#award').on('click', function(){
+			return false;
 			$('.pop_background').show();
 	        $('.award_list').show();
 	        trackEvent('次頁', 'PV', 'PC-得獎名單公布');
@@ -178,17 +232,21 @@
 			
 			if(rule_menu != menu){
 				if(menu == 1){
+					window.location.hash='#5rdPage-1';
 					trackEvent('次頁', 'PV', 'PC-活動辦法-登入發票');
 					trackEvent('次頁', 'Click', 'PC-活動辦法-登入發票點選');
 				}else if(menu == 2){
+					window.location.hash='#5rdPage-2';
 					trackEvent('內容頁', 'PV', 'PC-活動辦法-分享超KOH時刻');
 					trackEvent('內容頁', 'Click', 'PC-活動辦法-分享超KOH時刻點選');
 				}else if(menu == 3){
+					window.location.hash='#5rdPage-3';
 					trackEvent('內容頁', 'PV', 'PC-活動辦法-其他說明');
 					trackEvent('內容頁', 'Click', 'PC-活動辦法-其他說明點選');
 				}
 			}
 			
+			now_page_name = window.location.hash;
 
 
 			$('.menu0'+menu+'_b div p a').attr('style','');
@@ -215,9 +273,12 @@
 	}
 	
 	var product = 1;
-	function changeProduct(type){
+	function changeProduct(type,theOne){
 		var old_s = 1,new_s = 2;
-		if(type == 'next'){
+		if(theOne == true){
+			old_s = product;
+			product = new_s = type;
+		}else if(type == 'next'){
 			if(product == 4){
 				product = 1;
 				old_s = 4;
@@ -240,15 +301,19 @@
 		}
 		
 		if(product == 1){
+			window.location.hash='#6rdPage-1';
 			trackEvent('次頁', 'PV', 'PC-產品介紹-椰子水');
 		}else if(product == 2){
+			window.location.hash='#6rdPage-2';
 			trackEvent('內容頁', 'PV', 'PC-產品介紹-原味');
 		}else if(product == 3){
+			window.location.hash='#6rdPage-3';
 			trackEvent('內容頁', 'PV', 'PC-產品介紹-哇沙米');
 		}else if(product == 4){
+			window.location.hash='#6rdPage-4';
 			trackEvent('內容頁', 'PV', 'PC-產品介紹-巧克力');
 		}
-		
+		now_page_name = window.location.hash;
 		
             if(type == 'next'){
             	if(old_s == 1){
@@ -289,6 +354,8 @@
 			}
 		}
 
+		window.location.hash='#fbmsg-'+now_msg;
+
 		if(now_msg == 1){
 			trackEvent('內容頁', 'PV', 'PC-瑜珈篇影片觀看頁');
 
@@ -319,6 +386,8 @@
         trackEvent('內容頁', 'PV', 'PC-發票登入');
         trackEvent('首頁', 'Click', 'PC-登入發票');
 
+        u_data = ajax_user_invoice();
+		window.location.hash='#invoice';
         
         $('#twzipcode').twzipcode({
         	'css': ['county', 'district', 'zipcode'],
@@ -335,6 +404,7 @@
             $('.pop_background').hide();
             $('.invo_pop').addClass( 'fadeOut animated' );
             setTimeout("$('.invo_pop').removeClass( 'fadeOut animated' ).hide();",400);
+            window.location.hash = now_page_name;
         });
 
         $('.add_invo').on('click', function(){
@@ -354,6 +424,7 @@
         }
         
         $('.pop_background').show();
+		window.location.hash='#fbmsg-'+fb_msg;
         
 		trackEvent('內容頁', 'PV', 'PC-瑜珈篇影片觀看頁');
 		trackEvent('首頁', 'Click', 'PC-分享超KOH時刻');
@@ -365,12 +436,13 @@
             $('.pop_background').hide();
             $('.koh_msg').addClass( 'fadeOut animated' );
             setTimeout("$('.koh_msg').removeClass( 'fadeOut animated' ).hide();",400);
+            window.location.hash = now_page_name;
         });
         
     }
     
-//    var fb_id = "1582921411";
-//    var fb_name = "pamela";
+    //var fb_id = "1582921411";
+    //var fb_name = "pamela";
     var fb_id = fb_name = '';
     function get_facebook(){
 
@@ -479,10 +551,9 @@
 					$('.invo_pop').hide();
 					trackEvent('內容頁', 'PV', 'PC-發票登入成功');
 					trackEvent('內容頁', 'Click', 'PC-發票成功送出');
-
 					$('.award_pop').show();
-
 					$('.pop_bottom a').show();
+		            window.location.hash = now_page_name;
 				}else{
 					console.log(response);
 					alert('發票登錄失敗請重新再試一次!');
@@ -531,8 +602,8 @@
 				if(response.s == '1'){
 					$('.koh_msg').hide();
 					$('.share_pop').show();
-
 					$('.koh_msg .msg_bottom a.share').show();
+		            window.location.hash = now_page_name;
 				}else{
 					console.log(response);
 					alert('發票登錄失敗請重新再試一次!');
@@ -550,6 +621,43 @@
                 alert('2'+xhr.status); 
                 alert(thrownError); 
                 $('.koh_msg .msg_bottom a.share').show();
+            }
+        });
+    }
+    
+    function ajax_user_invoice(){
+    	if(fb_id == ''){
+        	if(!get_facebook()){
+            	alert('Facebook 未正確登入!');
+            	return false;
+        	}
+        }
+    	
+
+    	$.ajax({
+            url: 'ajax.php?mod=get_user',
+            data: 'fb_id=' + fb_id ,
+            type:"POST",
+            dataType: 'json',
+            success: function(response){
+				if(response.s == '1'){
+					$('#invoice_name').val(response.msg.name);
+					//$('#invoice_sex').val(response.msg.name);
+					$('#invoice_age').val(response.msg.age);
+					$('#invoice_tel').val(response.msg.tel);
+					$('input[name=invoice_sex][value="'+response.msg.sex+'"]').attr('checked',true);
+					$('input[name=invoice_zipcode]').val(response.msg.addr[0]).trigger( "change" );
+					$('select[name=invoice_county]').val(response.msg.addr[1]).trigger( "change" );
+					$('select[name=invoice_district]').val(response.msg.addr[2]).trigger( "change" );
+					$('#invoice_addr').val(response.msg.addr[3]);
+					return response;
+				}else{
+		        	return false;
+				}
+            },
+            error:function(xhr, ajaxOptions, thrownError){ 
+                alert('4'+xhr.status); 
+                alert(thrownError); 
             }
         });
     }
@@ -618,4 +726,19 @@
         $('.share_pop').hide();
         $('.award_pop').hide();
         $('.pop_background').hide();
+    }
+    
+    
+    function share_mag(){
+    	if(fb_msg == 1){
+    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F696613193775018%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
+    	}
+    	
+    	if(fb_msg == 2){
+    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F694957030607301%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
+        	}
+    	
+    	if(fb_msg == 3){
+    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F679592952143709%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
+        }
     }

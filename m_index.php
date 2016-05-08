@@ -5,8 +5,11 @@ require_once 'm_header.php';
 <script>
 $(document).ready(function() {
 	$('.loading').hide();
+	var now_page_name = '';
+
 	$('#fullpage').fullpage({
 		scrollBar: false,
+		anchors: ['firstPage', 'secondPage', '3rdPage', '4rdPage'],
 		afterLoad: function(anchorLink, index){
 			$('.fix_btn').show();
 			if(index == 1){
@@ -27,6 +30,7 @@ $(document).ready(function() {
 			if(index == 4){
 				trackEvent('次頁', 'PV', 'MB-喝酒篇影片');
 			}
+			setTimeout('now_page_name = window.location.hash;',600);
 		},
 		onLeave: function(index,nextIndex,direction){
 			if(nextIndex == 1){
@@ -107,19 +111,18 @@ function get_invoice(){
     trackEvent('內容頁', 'PV', 'MB-發票登入');
     
     $('.invo').show();
-    
+	window.location.hash='#invoice';
+	
     $('#twzipcode').twzipcode({
     	'css': ['county', 'district', 'zipcode'],
     	'countyName'   : 'invoice_county',
         'districtName' : 'invoice_district',
         'zipcodeName'  : 'invoice_zipcode'
     });
-    $('.pop_background').show();
-    $('.invo_pop').show();
 
-    $('.invo_pop .login').on('click',function(){
-        $('.pop_background').hide();
-        $('.invo_pop').hide();
+    $('.invo .invo_top .exit').on('click',function(){
+    	$('.invo').hide();
+    	window.location.hash = now_page_name;
     });
 
     $('.add_in').on('click', function(){
@@ -139,55 +142,10 @@ function get_share(){
 
     $('.koh_msg').show();
     trackEvent('內容頁', 'PV', 'MB-瑜珈篇影片觀看頁');
-    $('.koh_msg .msg_top a').on('click',function(){
-        $('.pop_background').hide();
+    $('.koh_msg .msg_top .exit').on('click',function(){
         $('.koh_msg').hide();
     });
     
-}
-
-// var fb_id = "1582921411";
-// var fb_name = "pamela";
-var fb_id = fb_name = '';
-function get_facebook(){
-	window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '1011014942321040',
-	      xfbml      : true,
-	      version    : 'v2.6'
-	    });
-	    
-	    FB.getLoginStatus(function(response) {
-	    	  if (response.status === 'connected') {
-	    	    FB.api('/me', function(response) {
-			        ajax_facebook(response.id, response.name);
-			        return true;
-			    });
-	    	  }
-	    	  else {
-				FB.login(function(response) {
-			      if (response.authResponse) {
-			       FB.api('/me', function(response) {
-			           ajax_facebook(response.id, response.name);
-				       return true;
-			       });
-			      }else{
-				      return false;
-			      }
-				});
-	    	  }
-	    	});
-	    	
-	  };
-
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/zh_TW/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	  
 }
 
 // var fb_id = "1582921411";
@@ -255,8 +213,8 @@ function ajax_facebook(id, name){
 			}
 		},
         error:function(xhr, ajaxOptions, thrownError){ 
-            alert(xhr.status); 
-            alert(thrownError); 
+//             alert(xhr.status); 
+//             alert(thrownError); 
         }
     });
 }
@@ -514,6 +472,9 @@ function close_award_pop(){
 <!--登錄發票-->
 <div class="invo" style="display:none;">
     <div class="invo_top">
+    	<a class="exit">
+            <img src="m_images/invoice_02.png">
+        </a>
         <h3>
             <img src="m_images/m_invo01.png">
         </h3>
@@ -593,6 +554,9 @@ function close_award_pop(){
 <!--超KOH時刻留言分享-->
 <div class="koh_msg" style="display:none;">
     <div class="msg_top">
+    	<a class="exit">
+            <img src="m_images/invoice_02.png">
+        </a>
         <h3>
             <img src="m_images/m_share01.png">
         </h3>

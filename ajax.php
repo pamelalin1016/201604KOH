@@ -87,6 +87,23 @@ if($mod == 'video'){
     
 }
 
+if($mod == 'get_user'){
+    $fb['fb_id'] = ft($_POST['fb_id']);
+    $fb['fb_id'] = ($fb['fb_id'] == '')?ft($_GET['fb_id']):$fb['fb_id'];
+    $u_data = $model_activity_koh->getKohInvoice($fb);
+    if(isset($u_data) && count($u_data) > 0){
+        mb_internal_encoding("UTF-8");
+        $addr = $u_data['addr'];
+        $u_data['addr'] = explode(' ', $addr);
+        $u_data['addr'][3] = mb_substr($addr, mb_strpos($addr,' ',11,'UTF-8')+1);
+        echo json_encode(array('s'=>1,'msg'=>$u_data));
+    }else{
+        echo json_encode(array('s'=>-1,'msg'=>''));
+    }
+    exit;
+}
+
+
 
 
 echo json_encode(array('s'=>-1,'msg'=>'寫入失敗'));

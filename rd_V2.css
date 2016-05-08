@@ -102,6 +102,16 @@ a,.next_btn {
 	background-size:215px 152px;
 }
 
+.index .content .share a:hover img {
+	animation:pamela_bg_small_to_big_C 0.15s linear 0s ;
+	/* Safari and Chrome: */
+	-webkit-animation:pamela_bg_small_to_big_C 0.15s linear 0s ;
+	background-size:215px 152px;
+	transform:  scaleX(215px) scaleY(152px) ;
+	
+	width: 215px;
+	height: 152px;
+}
 .rule_page .content .rule_cont .menu01_b,
 .rule_page .content .rule_cont .menu02_b,
 .rule_page .content .rule_cont .menu03_b {
@@ -266,16 +276,13 @@ a,.next_btn {
 
 /**/
 /*.mov03 .content .object01 div a  , .mov03 .content .object01 div , */
-/*
-.mov01 .content .object07 div,
-.mov02 .content .object01 div,
-.mov03 .content .object01 div
- {
-	width: 691px;
-	height: 387px;
+
+.mov01 .content .object07 ,
+.mov02 .content .object01 ,
+.mov03 .content .object01 {
 	overflow: hidden;
 }
-*/
+
 
 /*
 .mov01 .content .object07 div a,
@@ -295,16 +302,23 @@ a,.next_btn {
 	animation:pamela_bg_small_to_big_B 0.15s linear 0s ;
 	/* Safari and Chrome: */
 	-webkit-animation:pamela_bg_small_to_big_B 0.15s linear 0s ;
-	background-size: 120% 120%;
+	transform:  scaleX(1.20) scaleY(1.20) ;
+	background-size: 120% 120%;background-position: -69px -39px;top: -39px;left: -69px;
+	/*background-size: 120% 120%;
 	background-position: -69px -39px;
 	top: -39px;
-	left: -69px;
+	left: -69px;*/
 	/*transform: rotate(5deg);*/
 	
 }
 
 .mov01 .content .object07 div {
 	margin: 0px auto;
+}
+
+.mov02 .content .object01 a {
+    width: auto;
+    display: block;
 }
 
 .mov03 .content .object01 div {
@@ -415,6 +429,21 @@ a,.next_btn {
 100% {background-size:215px 152px;width: 215px;height: 152px;}*/
 0%   {transform:  scaleX(205px) scaleY(145px) ;background-size: 205px 145px;}
 100% {transform:  scaleX(215px) scaleY(152px) ;background-size: 215px 152px;}
+
+}
+
+
+@keyframes pamela_bg_small_to_big_C {
+0%   {width: 205px; height: 145px;}
+100% {width: 215px; height: 152px;}
+}
+
+@-webkit-keyframes pamela_bg_small_to_big_C {
+/* Safari and Chrome */
+/*0%   {background-size:205px 145px;width: 205px;height: 145px;}
+100% {background-size:215px 152px;width: 215px;height: 152px;}*/
+0%   {width: 205px; height: 145px;}
+100% {width: 215px; height: 152px;}
 
 }
 

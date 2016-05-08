@@ -11,6 +11,18 @@ class ModelActivityKoh{
         return $query['0']['id'];
     }
     
+    public function getKohInvoice($data) {
+        $sql = "SELECT a.id,a.invoice_ct_dt,CONCAT(a.invoice_num1,'\n',a.invoice_num2,'\n',a.invoice_num3,'\n',a.invoice_num4,'\n',a.invoice_num5) invoice_num,a.name,a.sex,a.age,a.tel,a.addr,u.fb_id,u.fb_name,u.share_cnt FROM `activity_koh_invoice` as a RIGHT JOIN `activity_koh_user` as u ON a.user_id = u.id ";
+
+        $sql .=" WHERE u.fb_id = '".$data['fb_id']."' ";
+
+        $sql .= " ORDER BY a.invoice_ct_dt DESC";
+        $sql .= " LIMIT 0,1";
+
+        $query = $this->db->query($sql);
+        return $query[0];
+    }
+    
     public function addKohUser($data) {
         $sql = "INSERT INTO `activity_koh_user` ";
         $sql .= "(`fb_id`                 , `fb_name`                 ,`date_added`) VALUES ";
@@ -78,7 +90,9 @@ class ModelActivityKoh{
         return $query['0']['total'];
     }
     public function addKohVideoCnt($id = 0){
-        $sql = "UPDATE activity_koh_user SET `share_cnt` = `share_cnt`+1 ";
+        $u_share = $this->getKohReportTotalVideo($id);
+        
+        $sql = "UPDATE activity_koh_user SET `share_cnt` = '".$u_share['video_cnt']."' ";
         $sql .= "WHERE `id` = ".$id;
         $query = $this->db->query($sql);
     }
@@ -109,8 +123,11 @@ class ModelActivityKoh{
         return $query[0];
     }
     
-    public function getKohReportTotalVideo() {
+    public function getKohReportTotalVideo($uid = '') {
         $sql = "SELECT count(id) as video_cnt,COUNT(DISTINCT user_id) as video_user_cnt FROM `activity_koh_video` ";
+        if($uid != ''){
+            $sql .='WHERE user_id = "'.$uid.'"';
+        }
         //$sql .='WHERE date_added >= "'.date('Y-m-d',$dt).'" and date_added < "'.date('Y-m-d',$dt+86400).'"';
     
         $query = $this->db->query($sql);
