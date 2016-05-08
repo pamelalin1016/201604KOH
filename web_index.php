@@ -25,7 +25,35 @@
 <link href="pop.css" rel="stylesheet" type="text/css">
 <link href="rd_V2.css" rel="stylesheet" type="text/css">
 <link href="animate.css" rel="stylesheet" type="text/css">
-
+<?php if(false){?>
+<!-- 
+ *
+ *                                 _oo8oo_
+ *                                o8888888o
+ *                                88" . "88
+ *                                (| -_- |)
+ *                                0\  =  /0
+ *                              ___/'==='\___
+ *                            .' \\|     |// '.
+ *                           / \\|||  :  |||// \
+ *                          / _||||| -:- |||||_ \
+ *                         |   | \\\  -  /// |   |
+ *                         | \_|  ''\---/''  |_/ |
+ *                         \  .-\__  '-'  __/-.  /
+ *                       ___'. .'  /--.--\  '. .'___
+ *                    ."" '<  '.___\_<|>_/___.'  >' "".
+ *                   | | :  `- \`.:`\ _ /`:.`/ -`  : | |
+ *                   \  \ `-.   \_ __\ /__ _/   .-` /  /
+ *               =====`-.____`.___ \_____/ ___.`____.-`=====
+ *                                 `=---=`
+ *
+ * 趕得要死就只能這樣凌亂的JS吧
+ * 我寫的時候只有我跟天知道，現在只有天知道了...
+ * 請尊大神來保佑這個活動順利進行
+ * 看到這樣笑果就知道有多哀怨了吧
+ * 
+ -->
+ <?php }?>
 </head>
 <body style="background: url('images/video_bg.png') 0 0 repeat #dfffff;" class="body_bg_gogo">
 <!--loading頁-->
@@ -286,9 +314,9 @@
     </div>
     <div class="msg_min">
         <div class="fb_msg">
-        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F696613193775018%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F694957030607301%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F679592952143709%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </div>
         <div class="arrow">
             <a title="" class="left" onclick="changeFbMsg('left');">left</a>
