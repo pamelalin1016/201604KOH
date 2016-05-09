@@ -7,6 +7,9 @@ body {
     display: inline-block;
     width: 25px;
 }
+.svgword img {
+    width: 100%;
+}
 /*loadgin頁*/
 .loading {
     width: 100%;
@@ -950,6 +953,7 @@ body {
     margin: 0 auto;
     position: relative;
 }
+/*
 .club_member .footer .content a {
     display: block;
     position: absolute;
@@ -957,11 +961,17 @@ body {
     overflow: hidden;
     white-space: nowrap;
 }
+*/
 .club_member .footer .content a.world {
     width: 97px;
     height: 91px;
     top: -25px;
     left: 100px;
+    display: block;
+    position: absolute;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
     background: url("images/wg_logo.png") 0 0 no-repeat;
 }
 .club_member .footer .content a.touch {
@@ -969,6 +979,11 @@ body {
     height: 17px;
     top: 28px;
     left: 215px;
+    display: block;
+    position: absolute;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
     background: url("images/ta_logo.png") 0 0 no-repeat;
 }
 .club_member .footer .content .copyright {

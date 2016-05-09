@@ -386,17 +386,17 @@ function ajax_video(){
 
 	if(fb_msg == 1){
 		trackEvent('內容頁', 'Click', 'MB-瑜珈篇-影片分享');
-		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841581602638770%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
 	}
 	
 	if(fb_msg == 2){
 		trackEvent('內容頁', 'Click', 'MB-籃球篇-影片分享');
-		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580432638887%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
     }
 	
 	if(fb_msg == 3){
 		trackEvent('內容頁', 'Click', 'MB-喝酒篇-影片分享');
-		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
+		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580969305500%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook');
     }
 	$('.koh_msg').hide();
 }
@@ -644,9 +644,9 @@ function close_award_pop(){
         </h3>
     </div>
     <div class="msg_min">
-        <iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        <iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        <iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841581602638770%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580432638887%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        <iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580969305500%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="100%" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
     </div>
     <div class="msg_bottom">
         <div class="fb">

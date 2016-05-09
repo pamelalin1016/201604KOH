@@ -3,6 +3,13 @@
 body {
     background: #888;
 }
+.svgword {
+    display: inline-block;
+    width: 25px;
+}
+.svgword img {
+    width: 100%;
+}
 /*登錄發票*/
 .invo_pop {
     width: 680px;
@@ -47,6 +54,8 @@ body {
     font-family: Microsoft JhengHei;
 }
 .invo_pop .pop_min {
+    height: 420px;
+    overflow-y: scroll;
     background: #8fc31f;
     border-radius: 40px;
     padding: 35px 50px 50px;

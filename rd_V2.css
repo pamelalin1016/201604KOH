@@ -378,6 +378,10 @@ a,.next_btn {
 	-webkit-animation:bg_gogo 5s linear 0s infinite ;
 }
 
+.invo_pop .pop_min {
+	overflow-y: initial;
+	height: auto;
+}
 
 
 /*----------------------*/

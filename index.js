@@ -755,17 +755,17 @@
     function share_mag(){
     	if(fb_msg == 1){
     		trackEvent('內容頁', 'Click', 'PC-瑜珈篇-影片分享');
-    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
+    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841581602638770%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
     	}
     	
     	if(fb_msg == 2){
     		trackEvent('內容頁', 'Click', 'PC-籃球篇-影片分享');
-    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
+    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580432638887%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
         	}
     	
     	if(fb_msg == 3){
     		trackEvent('內容頁', 'Click', 'PC-喝酒篇-影片分享');
-    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
+    		window.open('https://www.facebook.com/sharer/sharer.php?app_id=1011014942321040&sdk=joey&u=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580969305500%2F&display=popup&ref=plugin&src=share_button', '發布到 Facebook', config='height=670,width=670,top=150,left=500');
         }
     }
     

@@ -191,7 +191,7 @@
     </div>
     <div class="pop_min">
         <div class="left_list">
-            <h4 class="title">喝就ㄒㄧㄠ\ 登錄發票</h4>
+            <h4 class="title">喝就<b class="svgword"><img src="images/word.svg"></b>登錄發票</h4>
             <ul>
                 <li class="title">泰國五星艾美雙人假期</li>
                 <li class="name">王小明</li>
@@ -315,9 +315,9 @@
     </div>
     <div class="msg_min">
         <div class="fb_msg">
-        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838802529583344%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838805249583072%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F838800739583523%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg1" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841581602638770%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg2" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580432638887%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        	<iframe id="fb_msg3" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FadidasRunningTW%2Fvideos%2F841580969305500%2F&width=500&show_text=true&appId=1011014942321040&height=520" width="500" height="520" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </div>
         <div class="arrow">
             <a title="" class="left" onclick="changeFbMsg('left');">left</a>
@@ -486,7 +486,7 @@
 		        <div class="rule_cont">
 		            <div class="menu01">
 		                <div class="top">
-		                    <a title="【喝就ㄒㄧㄠˋ】登錄發票" class="nor01 op01" onclick="changeRule(1,1);">【喝就ㄒㄧㄠˋ】登錄發票</a>
+		                    <a title="【喝就ㄒㄧㄠˋ】登錄發票" class="nor01 op01" onclick="changeRule(1,1);">【喝就<b class="svgword"><img src="images/word.svg"></b>】登錄發票</a>
 		                    <a title="【超KOH時刻】留言分享" class="nor02" onclick="changeRule(2,1);">【超KOH時刻】留言分享</a>
 		                    <a title="其他" class="nor03" onclick="changeRule(3,1);">其他</a>
 		                    <div class="clearboth"></div>
@@ -555,7 +555,7 @@
 			                <li class="product01">
                 		        <div class="tip" >
                 		            <div class="tip_koh">
-                		                部長 - KOH寶：有用不完的活力，總是充滿體力最喜歡將歡ㄒㄧㄠ\散佈給大家
+                		                部長 - KOH寶：有用不完的活力，總是充滿體力最喜歡將歡<b class="svgword"><img src="images/word.svg"></b>散佈給大家
                 		            </div>
                 		        </div>
                                 <img src="images/club_put01.png" width="95%">
@@ -579,7 +579,7 @@
 		        <div class="content">
 		            <a href="http://www.worldgymtaiwan.com/" title="WORLD GYM" class="world" target="_blank">WORLD GYM</a>
 		            <a href="http://www.touchaero.com.tw/" title="TOUCH AREO" class="touch" target="_blank">TOUCH AREO</a>
-		            <div class="copyright">Copyright © 2016  BABI  Inc. All Rights Reserved. Designed by Penetration Internet Agency</div>
+		            <div class="copyright">Copyright © 2016  BABI  Inc. All Rights Reserved. Designed by <a href="http://www.ptt.com.tw" title="Penetration Internet Agency" target="_blank">Penetration Internet Agency</a></div>
 		            <div class="clearboth"></div>
 		        </div>
 		    </div>
