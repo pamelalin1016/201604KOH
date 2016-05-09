@@ -71,7 +71,7 @@
 	width: 39%;
 }
 
-.invo, .award, .koh_msg, .share_iframe{
+.invo, .award, .koh_msg, .share_iframe, .share_pop{
 	z-index: 1000;
     position: absolute;
     top: 0;
@@ -94,6 +94,39 @@
     height: 100vh;
 }
 
+.index .content .next_btn {
+    background-position: 50% 45px;
+    height: 70px;
+    bottom: 25px;
+}
 
+@media screen and (max-height: 736px) {
+	.index .content .title01,.index .content .invoice_btn{
+		text-align: center;
+	}
+	.index .content .title01 img,.index .content .invoice_btn img{
+		width: 80%;
+	}
+	
+	.topbtn .content .object03 img {
+		width: 85%;
+	}
+}
+
+@media screen and (max-height: 580px) {
+	.index .content .title01,.index .content .invoice_btn{
+		text-align: center;
+	}
+	.index .content .title01 img,.index .content .invoice_btn img{
+		width: 60%;
+	}
+	
+	.topbtn .content .object03 img {
+		width: 65%;
+	}
+	.topbtn .content .object03 {
+	    right: 0;
+	}
+}
 
 

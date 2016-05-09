@@ -462,7 +462,7 @@ function check_form_invoice(){
 }
 
 function close_award_pop(){
-    $('.share').hide();
+    $('.share_pop').hide();
     $('.award').hide();
 }
 
@@ -484,7 +484,7 @@ function close_award_pop(){
                  <a title="登錄發票泰國雙人遊等你來拿" class="invoice_btn" onclick="get_invoice();">
                     <img src="m_images/invo_btn.png">
                 </a>
-                <a title="KOH時刻，立即見，ㄒㄧㄠˋ" class="next_btn" id="moveDown">KOH時刻，立即見，ㄒㄧㄠˋ</a>
+                <a title="KOH時刻，立即見 ㄒㄧㄠˋ" class="next_btn" id="moveDown">KOH時刻，立即見 <b class="svgword"><img src="images/word.svg"></b></a>
             </div>
         </div>
         <!--index_end-->
@@ -627,7 +627,7 @@ function close_award_pop(){
         <h4>
             <img src="m_images/invoice_06.png">
         </h4>
-        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
+        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會<b class="svgword"><img src="images/word.svg"></b></p>
         <a title="" onclick="close_award_pop();">確定</a>
     </div>
 </div>
@@ -672,8 +672,8 @@ function close_award_pop(){
         <h4>
             <img src="m_images/msg_06.png">
         </h4>
-        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
-        <a href="" title="">確定</a>
+        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會<b class="svgword"><img src="images/word.svg"></b></p>
+        <a title="" onclick="close_award_pop();">確定</a>
     </div>
 </div>
 <!--恭喜分享成功_end-->

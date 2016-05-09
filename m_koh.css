@@ -18,7 +18,7 @@
 /*固定式按鈕*/
 .fix_btn {
     width: 100%;
-    background: url("m_images/index_bg.jpg") 0 0  no-repeat;
+    background: url("images/index_bg.jpg") 0 0  no-repeat;
     background-size: cover;
 }
 .fix_btn .logo {
@@ -81,7 +81,7 @@
 .index {
     width: 100%;
     height: 100vh;
-    background: url("m_images/index_bg.jpg") 0 0 no-repeat;
+    background: url("images/index_bg.jpg") 0 0 no-repeat;
 }
 .index .content {
     width: 100%;
@@ -117,7 +117,7 @@
     position: fixed;
     bottom: 35px;
     text-decoration: none;
-    background: url("m_images/arrow_bottom.png") center bottom no-repeat;
+    background: url("images/arrow_bottom.png") center bottom no-repeat;
 }
 /*index_end*/
 
@@ -125,7 +125,7 @@
 .mov01 {
     width: 100%;
     height: 100vh;
-    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+    background: url("images/video_bg.png") 0 0 repeat #dfffff;
 }
 .mov01 .content {
     width: 95%;
@@ -160,7 +160,7 @@
 .mov02 {
     width: 100%;
     height: 100vh;
-    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+    background: url("images/video_bg.png") 0 0 repeat #dfffff;
 }
 .mov02 .content {
     width: 95%;
@@ -195,7 +195,7 @@
 .mov03 {
     width: 100%;
     height: 100vh;
-    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+    background: url("images/video_bg.png") 0 0 repeat #dfffff;
 }
 .mov03 .content {
     width: 95%;
@@ -235,7 +235,6 @@
 }
 .invo .invo_top {
     width: 100%;
-    position: relative;
 }
 .invo .invo_top h3 {
 }
@@ -260,7 +259,7 @@
     display: block;
     width: 24px;
     height: 24px;
-    background: url("m_images/invoice_04.png") 0 0 no-repeat;
+    background: url("images/invoice_04.png") 0 0 no-repeat;
     text-indent: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -331,7 +330,6 @@
 }
 .award .award_top {
     width: 100%;
-    position: relative;
 }
 .award .award_top h3 img {
     width: 100%;
@@ -409,7 +407,7 @@
     position: absolute;
     bottom: 1px;
     left: 0;
-    background: url("m_images/msg_left.png") 0 center no-repeat;
+    background: url("images/msg_left.png") 0 center no-repeat;
 }
 .koh_msg .msg_bottom a.right {
     display: block;
@@ -418,7 +416,7 @@
     position: absolute;
     bottom: 1px;
     right: 0;
-    background: url("m_images/msg_right.png") 0 center no-repeat;
+    background: url("images/msg_right.png") 0 center no-repeat;
 }
 .koh_msg .msg_bottom .fb {
     bottom: 0px;
@@ -434,10 +432,10 @@
     white-space: nowrap;
 }
 .koh_msg .msg_bottom .fb a.like {
-    background: url("m_images/msg_04.png") 0 0 no-repeat;
+    background: url("images/msg_04.png") 0 0 no-repeat;
 }
 .koh_msg .msg_bottom .fb a.share {
-    background: url("m_images/msg_05.png") 0 0 no-repeat;
+    background: url("images/msg_05.png") 0 0 no-repeat;
 }
 /*超KOH時刻留言分享_end*/
 
@@ -490,7 +488,7 @@
 /*活動辦法*/
 .rule_page {
     width: 100%;
-    background: url("m_images/video_bg02.png") 0 0 repeat #6fb2e5;
+    background: url("images/video_bg02.png") 0 0 repeat #6fb2e5;
 }
 .rule_page .content {
     padding-top: 100px;
@@ -529,7 +527,7 @@
 /*俱樂部成員*/
 .club_member {
     width: 100%;
-    background: url("m_images/video_bg.png") 0 0 repeat #dfffff;
+    background: url("images/video_bg.png") 0 0 repeat #dfffff;
 }
 .club_member .content {
     width: 100%;
@@ -661,4 +659,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
+}
+.svgword {
+    display: inline-block;
+    width: 25px;
 }

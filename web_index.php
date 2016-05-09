@@ -20,6 +20,7 @@
 <script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 <script type="text/javascript" src="ga.js"></script>
+<link href="https://kohcoconut.ptt.com.tw/favicon.ico" rel="shortcut icon" >
 <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="koh_V2.css" rel="stylesheet" type="text/css">
 <link href="pop.css" rel="stylesheet" type="text/css">
@@ -173,7 +174,7 @@
         <h3>恭喜獲得抽獎資格</h3>
     </div>
     <div class="pop_min">
-        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
+        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會<b class="svgword"><img src="images/word.svg"></b></p>
     </div>
     <div class="pop_bottom">
         <a title="確認送出" onclick="close_award_pop();">確認送出</a>
@@ -339,7 +340,7 @@
         <h3>恭喜分享成功</h3>
     </div>
     <div class="pop_min">
-        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會ㄒㄧㄠˋ</p>
+        <p>感謝參與<br>祝您抽中超KOH大獎，連做夢都會<b class="svgword"><img src="images/word.svg"></b></p>
     </div>
     <div class="pop_bottom">
         <a title="確定" onclick="close_award_pop();">確定</a>
@@ -414,7 +415,7 @@
 		        <div class="object06"><img src="images/mov01_cnt03.gif"></div>
 		        <div class="object07">
 <!--		        	<div>-->
-		            	<a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-瑜珈篇影片觀看');get_share();"><img src="images/mov01.jpg"></a>
+		            	<a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-瑜珈篇影片觀看');get_share(1);"><img src="images/mov01.jpg"></a>
 <!--		            </div>-->
 		        </div>
                 <div class="kohbg01"></div>
@@ -431,7 +432,7 @@
 		    <div class="content">
 		        <div class="object01">
 <!--		        	<div>-->
-		          <a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-籃球篇影片觀看');get_share();"><img src="images/mov02.jpg"></a>
+		          <a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-籃球篇影片觀看');get_share(2);"><img src="images/mov02.jpg"></a>
 <!--		            </div>-->
 		        </div>
 		        <div class="object02"><img src="images/mov02_title01.png"></div>
@@ -454,7 +455,7 @@
 		    <div class="content">
 		        <div class="object01">
 <!--		        	<div>-->
-		          <a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-喝酒篇影片觀看');get_share();"><img src="images/mov03.jpg"></a>
+		          <a title="影片分享" onclick="trackEvent('次頁', 'Click', 'PC-喝酒篇影片觀看');get_share(3);"><img src="images/mov03.jpg"></a>
 <!--		            </div>-->
 		        </div>
 		        <div class="object02"><img src="images/mov03_title01.png"></div>
@@ -576,8 +577,8 @@
 		<div class="club_member" style="overflow: initial;">
 		    <div class="footer">
 		        <div class="content">
-		            <a href="" title="WORLD GYM" class="world">WORLD GYM</a>
-		            <a href="" title="TOUCH AREO" class="touch">TOUCH AREO</a>
+		            <a href="http://www.worldgymtaiwan.com/" title="WORLD GYM" class="world" target="_blank">WORLD GYM</a>
+		            <a href="http://www.touchaero.com.tw/" title="TOUCH AREO" class="touch" target="_blank">TOUCH AREO</a>
 		            <div class="copyright">Copyright © 2016  BABI  Inc. All Rights Reserved. Designed by Penetration Internet Agency</div>
 		            <div class="clearboth"></div>
 		        </div>

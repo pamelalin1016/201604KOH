@@ -58,10 +58,10 @@ $(document).ready(function() {
         </div>
     </div>
     <div class="footer">
-        <a href="" title="WORLD GYM" class="world">
+        <a href="http://www.worldgymtaiwan.com/" title="WORLD GYM" class="world" target="_blank">
             <img src="m_images/wg_logo.png">
         </a>
-        <a href="" title="TOUCH AREO" class="touch">
+        <a href="http://www.touchaero.com.tw/" title="TOUCH AREO" class="touch" target="_blank">
             <img src="m_images/ta_logo.png">
         </a>
         <div class="copyright">Copyright © 2016  BABI  Inc. All Rights Reserved. Designed by Penetration Internet Agency</div>

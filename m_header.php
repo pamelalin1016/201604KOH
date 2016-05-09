@@ -20,6 +20,7 @@
 <script type="text/javascript" src="js/jquery.fullPage.js"></script>
 <script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script type="text/javascript" src="ga.js"></script>
+<link href="https://kohcoconut.ptt.com.tw/favicon.ico" rel="shortcut icon" >
 <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="m_koh.css" rel="stylesheet" type="text/css">
 <link href="m_rd.css" rel="stylesheet" type="text/css">

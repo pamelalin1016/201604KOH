@@ -78,7 +78,7 @@
 				}
 				
 				
-				
+				$('.video_box').hide();
 				$('.fix_btn').show();
 				$('.index').show();
 				$('.logo_btn a').attr('class','blue');
@@ -90,6 +90,7 @@
 					$('.logo_btn a').attr('class','');
 					$('.lt_menu').attr('class','lt_menu');
 					$('.index .next_btn').show();
+					$('.video_box').show();
 					setTimeout("$('.index .content .title01 h2').addClass( 'zoomIn animated' ).show();",400);
 					setTimeout("$('.index .content .title02').addClass( 'rollIn animated' ).show();",500);
 					setTimeout("$('.index .content .title03').addClass( 'bounceIn animated' ).show();",800);
@@ -97,6 +98,7 @@
 					setTimeout("$('.index .content .title05').addClass( 'zoomIn animated' ).show();",1000);
 					setTimeout("$('.index .content .title01 .share a').addClass( 'bounceIn animated' ).css({'display':'block'});",100);
 					setTimeout("$('.index .content .title01 .share a').removeClass( 'bounceIn' ).css({'display':'block'});",700);
+					
 				}
 				if(index == 2){
 					trackEvent('次頁', 'PV', 'PC-瑜珈篇影片');
@@ -222,6 +224,7 @@
 	});
 
 	var now_event = '';
+	var goit_id = 1;
 	var rule_menu = 1, rule_item = 1;
 	function changeRule(menu,item){
 		if(rule_menu != menu || rule_item != item){
@@ -278,6 +281,7 @@
 		if(theOne == true){
 			old_s = product;
 			product = new_s = type;
+			type = 'next';
 		}else if(type == 'next'){
 			if(product == 4){
 				product = 1;
@@ -300,6 +304,8 @@
 			}
 		}
 		
+		
+		
 		if(product == 1){
 			window.location.hash='#6rdPage-1';
 			trackEvent('次頁', 'PV', 'PC-產品介紹-椰子水');
@@ -314,7 +320,7 @@
 			trackEvent('內容頁', 'PV', 'PC-產品介紹-巧克力');
 		}
 		now_page_name = window.location.hash;
-		
+		if(old_s == new_s){return false;}
             if(type == 'next'){
             	if(old_s == 1){
             		trackEvent('內容頁', 'Click', 'PC-產品介紹-原味(下一頁)');
@@ -336,7 +342,7 @@
     }
 
 	var fb_msg = 1;
-	function changeFbMsg(type){
+	function changeFbMsg(type,page){
 		var now_msg = 1;
 		if(type == 'left'){
 			if(fb_msg == 1){
@@ -353,8 +359,15 @@
 				now_msg = fb_msg+1;
 			}
 		}
+		
+		if(type == 'goit'){
+			now_msg = page;
+		}
 
 		window.location.hash='#fbmsg-'+now_msg;
+
+        var iframe = document.getElementById('fb_msg'+fb_msg);
+        iframe.src = iframe.src;
 
 		if(now_msg == 1){
 			trackEvent('內容頁', 'PV', 'PC-瑜珈篇影片觀看頁');
@@ -415,13 +428,22 @@
         });
     }
 
-    function get_share(){
+    function get_share(id){
         if(fb_id == ''){
         	if(!get_facebook()){
             	now_event = 'get_share';
+            	goit_id = id;
             	return false;
         	}
         }
+        
+        if(id != fb_msg){
+        	changeFbMsg('goit',id);
+        }
+        
+
+        var iframe = document.getElementById('fb_msg'+id);
+        iframe.src = iframe.src;
         
         $('.pop_background').show();
 		window.location.hash='#fbmsg-'+fb_msg;
@@ -433,6 +455,7 @@
         setTimeout("$('.koh_msg').removeClass( 'fadeIn animated' );",400);
 
         $('.koh_msg .msg_top a').on('click',function(){
+            iframe.src = iframe.src;
             $('.pop_background').hide();
             $('.koh_msg').addClass( 'fadeOut animated' );
             setTimeout("$('.koh_msg').removeClass( 'fadeOut animated' ).hide();",400);
@@ -505,7 +528,7 @@
 					}
 					
 					if(now_event == 'get_share'){
-						get_share();
+						get_share(goit_id);
 					}
 					
 				}else{
